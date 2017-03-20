@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.climberscounter.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/teamA"
+                android:textColor="#616161"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26dp">
+
+                <TextView
+                    android:id="@+id/id_A_teamScore"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="4"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:text="@string/defaultScoreCounter"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/id_A_TopsCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/defaultScoreCounter"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                    <TextView
+                        android:id="@+id/id_A_TopsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@id/id_A_TopsCounter"
+                        android:text="Tops" />
+
+                    <TextView
+                        android:id="@+id/id_A_BonusCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/defaultBonusCounter" />
+
+                    <TextView
+                        android:id="@+id/id_A_BonusLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/id_A_BonusCounter"
+                        android:text="Bonus" />
+
+                    <TextView
+                        android:id="@+id/id_A_TimeCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/defaultTimerVal" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <ScrollView style="@style/hMatchParent_vWrapContent">
+
+                <LinearLayout
+                    style="@style/hMatchParent_vWrapContent"
+                    android:orientation="vertical">
+
+                    <View style="@style/horizontalSeparator"></View>
+
+                    <TextView
+                        style="@style/problemTitle"
+                        android:text="@string/route1" />
+
+                    <LinearLayout style="@style/hMatchParent_vWrapContent">
+
+                        <TextView
+                            style="@style/minorLabel"
+                            android:text="@string/tries" />
+
+                        <TextView
+                            android:id="@+id/id_A1_numberOfTries"
+                            style="@style/TryLeft"
+                            android:text="@string/currentTry" />
+
+                        <TextView
+                            android:id="@+id/id_A1_possibleTries"
+                            style="@style/TryRight"
+                            android:text="@string/outOfPossibleTries" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout style="@style/hMatchParent_vWrapContent">
+
+                            <Button
+                                android:id="@+id/id_A1_btnSTart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center"
+                                android:onClick="A_timeRunner"
+                                android:padding="4dp"
+                                android:text="@string/btnStart" />
+
+                            <TextView
+                                android:id="@+id/id_A1_timerValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:onClick="A_runChronometer"
+                                android:text="@string/defaultTimerVal"
+                                android:textColor="#000"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/hMatchParent_vWrapContent">
+
+                            <Button
+                                android:id="@+id/id_A1_Quit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="@string/btnQuit" />
+
+                            <Button
+                                android:id="@+id/id_A1_Bonus"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:onClick="A_addBonus"
+                                android:text="@string/bonus" />
+
+                            <Button
+                                android:id="@+id/id_A1_Top"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:onClick="A_addTopPoints"
+                                android:text="@string/top" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+
+        <View style="@style/verticalSeparator"></View>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="vvv B"
+                android:textColor="#616161"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="resetScores"
+        android:text="reset" />
+
+</RelativeLayout>

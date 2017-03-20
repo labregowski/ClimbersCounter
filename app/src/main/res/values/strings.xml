@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Climbers Counter</string>
+
+<!-- Climbing Route names -->
+    <string name="route1">Climbing Route #1</string>
+    <string name="route2">Climbing Route #2</string>
+    <string name="route3">Climbing Route #3</string>
+    <string name="route4">Climbing Route #4</string>
+    <string name="route5">Climbing Route #5</string>
+    <string name="route6">Climbing Route #6</string>
+<!-- Score terminology -->
+    <string name="top">Top</string>
+    <string name="bonus">Bonus</string>
+    <string name="tries">Try</string>
+    <string name="currentTry">0</string>
+    <string name="outOfPossibleTries">/5</string>
+    <!-- Buttons -->
+    <string name="btnStart">Start</string>
+    <string name="btnQuit">Quit</string>
+    <string name="btnBonus">Bonus</string>
+    <string name="btnTop">Top</string>
+    <string name="btnReset">Reset Counters</string>
+
+<!-- Teams -->
+    <string name="teamA">Athlete A</string>
+    <string name="teamB">Athlete B</string>
+<!-- Default Text Values -->
+    <string name="defaultScoreCounter">0</string>
+    <string name="defaultTopsCounter">0</string>
+    <string name="defaultBonusCounter">0</string>
+    <string name="defaultTimerVal">00:00:00</string>
+</resources>
