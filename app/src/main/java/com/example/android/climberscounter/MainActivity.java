@@ -39,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
     int A_BonusCounter = 0;
     int A1_numberOfTries = 0;
     int limitofTries = 5;
+    int A1_Bonus = 0;
 
     //TimeCounter Variables
-    private TextView A_TimeCounter;  //TODO why private !!
+    private TextView A_TimeCounter;  //TODO know why private !!
     private Handler customHandler = new Handler();
     private long A_startTime = 0L;
     long A_timeInMilliseconds = 0L;
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
 //  A_Time Counter
         A_TimeCounter = (TextView) findViewById(R.id.id_A_TimeCounter);
 
@@ -73,13 +73,18 @@ public class MainActivity extends AppCompatActivity {
         A1startButton = (Button) findViewById(R.id.id_A1_btnStart);
         A1startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                A1_incrementNumberofTries();
                 A_startTime = SystemClock.uptimeMillis();
                 customHandler.postDelayed(updateTimerThread, 0);
                 disableButton(R.id.id_A1_btnStart);
                 enableButton(R.id.id_A1_btnQuit);
-                enableButton(R.id.id_A1_btnBonus); //TODO only if local variable BONUS is zero
+                //TODO only if local variable BONUS is zero
                 enableButton(R.id.id_A1_btnTop);
-                A1_incrementNumberofTries(); //TODO updates the number of tries
+                if (A1_Bonus == 0) {
+                    enableButton(R.id.id_A1_btnBonus);
+                } else {
+                }
+                ;
             }
         });
 //   A1_Quit Button - pauses counter and increases number of attemps
@@ -97,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
                                                 } else {
                                                 }
                                                 ;
-
-
                                             }
                                         }
         );
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         A1bonusButton = (Button) findViewById(R.id.id_A1_btnBonus);
         A1bonusButton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View view) {
+                                                 A1_Bonus = 1;
                                                  A_incrementBonusCounter();
                                                  disableButton(R.id.id_A1_btnBonus);
                                              }
@@ -162,81 +166,101 @@ public class MainActivity extends AppCompatActivity {
 
     public void A1_incrementNumberofTries() {
         A1_numberOfTries += 1;
-        TextView updatedAttempt = (TextView) findViewById(R.id.id_A1_numberOfTries);
-        updatedAttempt.setText(String.format("%01d", A1_numberOfTries));
+        update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
+//        TextView updatedAttempt = (TextView) findViewById(R.id.id_A1_numberOfTries);
+//        updatedAttempt.setText(String.format("%01d", A1_numberOfTries));
     }
 
     //  A_Increment Bonus Counter
     public void A_incrementBonusCounter() {
         A_BonusCounter += 1;
-        update_anyScore(R.id.id_A_BonusCounter,A_BonusCounter);
+        update_anyIntTextView(R.id.id_A_BonusCounter, A_BonusCounter);
 
         //A_updateValues(A_teamScorePoints, A_TopsCounter, A_BonusCounter);
     }
 
     //  A_Increment Top Counter
+
+
+
     public void A_incrementTopCounterAndScore() {
-        A_teamScorePoints += 1200;
+        //    Points Per Route at each Try
+        int R1T1 = 1500;
+        int R1T2 = 1200;
+        int R1T3 = 1080;
+        int R1T4 = 972;
+        int R1T5 = 875;
+
+        //TODO should be someting like...
+
+
+
+        int i= A1_numberOfTries;
+        A_teamScorePoints += R1T1;
+
         A_TopsCounter += 1;
-        update_anyScore(R.id.id_A_TopsCounter,A_TopsCounter);
-        update_anyScore(R.id.id_A_teamScore,A_teamScorePoints);
+        update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
+        update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
         //A_updateValues(A_teamScorePoints, A_TopsCounter, A_BonusCounter);
     }
 
-    //A_Methods to Update scores
-    //TODO check weather it is better to keep all updates in one function (for all buttons) - some of the updated values will remain unchanged - or if it is better one function per button
-    public void A_updateValues(int score, int tops, int bonuses) {
-
-        TextView teamScore = (TextView) findViewById(R.id.id_A_teamScore);
-        teamScore.setText(decimalFormatEU.format(score));
-        TextView teamTops = (TextView) findViewById(R.id.id_A_TopsCounter);
-        teamTops.setText(String.valueOf(tops));
-        TextView teamBonus = (TextView) findViewById(R.id.id_A_BonusCounter);
-        teamBonus.setText(String.valueOf(bonuses));
-    }
-
-
+    //
+    // Deprecated - Came up with the "update_anyIntTextView" method
+    // A_Methods to Update scores
+    //
+//    public void A_updateValues(int score, int tops, int bonuses) {
+//
+//        TextView teamScore = (TextView) findViewById(R.id.id_A_teamScore);
+//       teamScore.setText(decimalFormatEU.format(score));
+//        TextView teamTops = (TextView) findViewById(R.id.id_A_TopsCounter);
+//        teamTops.setText(String.valueOf(tops));
+//        TextView teamBonus = (TextView) findViewById(R.id.id_A_BonusCounter);
+//        teamBonus.setText(String.valueOf(bonuses));
+//    }
 
     //  Initialize all values
     public void reset() {
         //TODO: I'm almost sure there should be a way of eseting all values to initial state - need to investigate. mabe something with clear()
         //stop counter
         pauseCounter();
-//  A_reset variables and apply
+        //  A_reset variables and apply
         A_teamScorePoints = 0;
         A_TopsCounter = 0;
         A_BonusCounter = 0;
+        A1_Bonus = 0;
         A1_numberOfTries = 0;
         A_startTime = 0;
         A_timeInMilliseconds = 0;
         A_timeSwapBuff = 0;
         A_updatedTime = 0;
         String A_elapsedTime = "00:00:00";
-        update_anyScore(R.id.id_A_teamScore, A_teamScorePoints);
-        update_anyScore(R.id.id_A_TopsCounter, A_TopsCounter);
-        update_anyScore(R.id.id_A_BonusCounter, A_BonusCounter);
-        update_anyScore(R.id.id_A1_numberOfTries, A1_numberOfTries);
+        update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
+        update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
+        update_anyIntTextView(R.id.id_A_BonusCounter, A_BonusCounter);
+        update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
         update_anyTimer(R.id.id_A_TimeCounter, A_elapsedTime);
-//  A_reset button states
+        //  A_reset button states
         disableButton(R.id.id_A1_btnQuit);
         disableButton(R.id.id_A1_btnBonus);
         disableButton(R.id.id_A1_btnTop);
         enableButton(R.id.id_A1_btnStart);
-
     }
 
 //Methods to update values
 
+
     //Methods to update textViews
-    public void update_anyScore(int thisTextViewIid, int updatedScore) {
+    public void update_anyIntTextView(int thisTextViewIid, int updatedScore) {
         TextView scoreView = (TextView) findViewById(thisTextViewIid);
-        scoreView.setText(String.valueOf(updatedScore));
+        scoreView.setText(decimalFormatEU.format(updatedScore));
+        // scoreView.setText(String.valueOf(updatedScore));
     }
 
     public void update_anyTimer(int thisTextViewIid, String updatedTime) {
         TextView timerView = (TextView) findViewById(thisTextViewIid);
         timerView.setText(String.valueOf(updatedTime));
     }
+
     //Disables Button
     public void disableButton(int thisbuttonId) {
         Button currentButton = (Button) findViewById(thisbuttonId);
@@ -249,11 +273,11 @@ public class MainActivity extends AppCompatActivity {
         currentButton.setEnabled(true);
     }
 
-    //Resets values to original state
-    public void resetView(int thisViewId) {
-        View currentView = (View) findViewById(thisViewId);
-        //currentView.setText
-    }
+//    //Resets values to original state
+//    public void resetView(int thisViewId) {
+//        View currentView = (View) findViewById(thisViewId);
+//        //currentView.setText
+//    }
 
     //TODO changes buttons to invisible
 
