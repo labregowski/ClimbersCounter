@@ -9,10 +9,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#fff">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -58,10 +58,10 @@
                         android:id="@+id/id_A_TopsCounter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/defaultScoreCounter"
-                        android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:text="@string/defaultScoreCounter" />
 
                     <TextView
                         android:id="@+id/id_A_TopsLabel"
@@ -110,23 +110,36 @@
                         style="@style/problemTitle"
                         android:text="@string/route1" />
 
-                    <LinearLayout style="@style/hMatchParent_vWrapContent">
+                    <RelativeLayout style="@style/hMatchParent_vWrapContent">
 
                         <TextView
+                            android:id="@+id/id_A1txtTry"
+                            android:layout_alignParentLeft="true"
                             style="@style/minorLabel"
                             android:text="@string/tries" />
 
                         <TextView
                             android:id="@+id/id_A1_numberOfTries"
+                            android:layout_toRightOf="@id/id_A1txtTry"
                             style="@style/TryLeft"
                             android:text="@string/currentTry" />
 
                         <TextView
                             android:id="@+id/id_A1_possibleTries"
+                            android:layout_toRightOf="@id/id_A1_numberOfTries"
                             style="@style/TryRight"
                             android:text="@string/outOfPossibleTries" />
+                        <TextView
+                            android:id="@+id/id_A1_timerValue"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:text="@string/defaultTimerVal"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
 
-                    </LinearLayout>
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -136,31 +149,22 @@
                         <LinearLayout style="@style/hMatchParent_vWrapContent">
 
                             <Button
-                                android:id="@+id/id_A1_btnSTart"
+                                android:id="@+id/id_A1_btnStart"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
                                 android:gravity="center"
-                                android:onClick="A_timeRunner"
                                 android:padding="4dp"
                                 android:text="@string/btnStart" />
 
-                            <TextView
-                                android:id="@+id/id_A1_timerValue"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:onClick="A_runChronometer"
-                                android:text="@string/defaultTimerVal"
-                                android:textColor="#000"
-                                android:textSize="14sp" />
+
 
                         </LinearLayout>
 
                         <LinearLayout style="@style/hMatchParent_vWrapContent">
 
                             <Button
-                                android:id="@+id/id_A1_Quit"
+                                android:id="@+id/id_A1_btnQuit"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
@@ -170,25 +174,23 @@
                                 android:text="@string/btnQuit" />
 
                             <Button
-                                android:id="@+id/id_A1_Bonus"
+                                android:id="@+id/id_A1_btnBonus"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
                                 android:layout_weight="3"
                                 android:gravity="center"
                                 android:padding="4dp"
-                                android:onClick="A_addBonus"
                                 android:text="@string/bonus" />
 
                             <Button
-                                android:id="@+id/id_A1_Top"
+                                android:id="@+id/id_A1_btnTop"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
                                 android:layout_weight="2"
                                 android:gravity="center"
                                 android:padding="4dp"
-                                android:onClick="A_addTopPoints"
                                 android:text="@string/top" />
                         </LinearLayout>
                     </LinearLayout>
@@ -199,6 +201,8 @@
 
 
         <View style="@style/verticalSeparator"></View>
+
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -223,6 +227,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/id_btnReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
