@@ -185,19 +185,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void A_incrementTopCounterAndScore() {
         //    Points Per Route at each Try
-        int R1T1 = 1500;
-        int R1T2 = 1200;
-        int R1T3 = 1080;
-        int R1T4 = 972;
-        int R1T5 = 875;
-
-        //TODO should be someting like...
-
-
-
-        int i= A1_numberOfTries;
-        A_teamScorePoints += R1T1;
-
+        int[] R1T = {1500, 1200, 1080, 972, 875};
+        int i= A1_numberOfTries - 1; // -1 because array starts at 0.
+        A_teamScorePoints += R1T[i];
         A_TopsCounter += 1;
         update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
         update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
@@ -247,7 +237,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //Methods to update values
-
 
     //Methods to update textViews
     public void update_anyIntTextView(int thisTextViewIid, int updatedScore) {
