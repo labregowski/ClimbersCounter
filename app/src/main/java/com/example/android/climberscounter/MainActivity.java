@@ -47,8 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private long A_startTime = 0L,
                 A_timeInMilliseconds = 0L,
                 A_timeSwapBuff = 0L,
-                A_updatedTime = 0L,
-                A_accumulatedTime = 0L;
+                A_updatedTime = 0L;
+    String A_elapsedTime = "00:00:00";
+
 
     //Global methods to format numbers to european format #.###
     NumberFormat NumberFormatEU = NumberFormat.getNumberInstance(Locale.GERMAN);
@@ -67,12 +68,14 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putInt("A_BonusCounter", A_BonusCounter);
         savedInstanceState.putInt("A1_numberOfTries", A1_numberOfTries);
         savedInstanceState.putInt("A1_Bonus", A1_Bonus);
+        savedInstanceState.putString("A_elapsedTime",A_elapsedTime);
 
+//  //  TODO SOlving: when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero 
         savedInstanceState.putLong("A_startTime", A_startTime);
         savedInstanceState.putLong("A_timeInMilliseconds", A_timeInMilliseconds);
         savedInstanceState.putLong("A_timeSwapBuff", A_timeSwapBuff);
         savedInstanceState.putLong("A_updatedTime", A_updatedTime);
-
+//   EO TODO
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -86,21 +89,30 @@ public class MainActivity extends AppCompatActivity {
         A_BonusCounter = savedInstanceState.getInt("A_BonusCounter");
         A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
 
+        update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
+        update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
+        update_anyIntTextView(R.id.id_A_BonusCounter, A_BonusCounter);
+        update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
+
+        A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
+        update_anyTimer(R.id.id_A_TimeCounter,A_elapsedTime);
+
+//  //  TODO SOlving: when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero
         A_startTime = savedInstanceState.getLong("A_startTime");
         A_timeInMilliseconds = savedInstanceState.getLong("A_timeInMilliseconds");
         A_timeSwapBuff = savedInstanceState.getLong("A_timeSwapBuff");
         A_updatedTime = savedInstanceState.getLong("A_updatedTime");
-
+//  EO TODO
 
         // Restore UI state from the savedInstanceState.
         // This bundle has also been passed to onCreate.
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        reset();
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        reset();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -201,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //  TODO SOlving: when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero
     //  A_Timer:RUN
     public Runnable updateTimerThread = new Runnable() {
         public void run() {
@@ -210,11 +223,11 @@ public class MainActivity extends AppCompatActivity {
             int mins = (int) ((A_updatedTime - hours * 3600000) / 60000);
             int secs = (int) ((A_updatedTime - hours * 3600000 - mins * 60000) / 1000);
             int decs = (int) ((A_updatedTime - hours * 3600000 - mins * 60000 - secs * 1000) / 100);
-            A_TimeCounter.setText(hours + ":" + mins + ":"
+            A_elapsedTime=hours + ":" + mins + ":"
                     + String.format("%02d", secs)
                     + ":"
-                    + String.format("%02d", decs)
-            );
+                    + String.format("%02d", decs);
+            A_TimeCounter.setText(A_elapsedTime);
             customHandler.postDelayed(this, 0);
         }
     };
@@ -286,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
         A_timeInMilliseconds = 0;
         A_timeSwapBuff = 0;
         A_updatedTime = 0;
-        String A_elapsedTime = "00:00:00";
+        A_elapsedTime = "00:00:00";
         update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
         update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
         update_anyIntTextView(R.id.id_A_BonusCounter, A_BonusCounter);
