@@ -34,29 +34,91 @@ import static com.example.android.climberscounter.R.string.currentTry;
 public class MainActivity extends AppCompatActivity {
     //variables Team A
     // Global variables initialization
-    int A_teamScorePoints = 0;
-    int A_TopsCounter = 0;
-    int A_BonusCounter = 0;
-    int A1_numberOfTries = 0;
-    int limitofTries = 5;
-    int A1_Bonus = 0;
+    int A_teamScorePoints = 0,
+        A_TopsCounter = 0,
+        A_BonusCounter = 0,
+        A1_numberOfTries = 0,
+        limitofTries = 5,
+        A1_Bonus = 0;
 
     //TimeCounter Variables
     private TextView A_TimeCounter;  //TODO know why private !!
     private Handler customHandler = new Handler();
-    private long A_startTime = 0L;
-    long A_timeInMilliseconds = 0L;
-    long A_timeSwapBuff = 0L;
-    long A_updatedTime = 0L;
-    long A_accumulatedTime = 0L;
+    private long A_startTime = 0L,
+                A_timeInMilliseconds = 0L,
+                A_timeSwapBuff = 0L,
+                A_updatedTime = 0L,
+                A_accumulatedTime = 0L;
 
     //Global methods to format numbers to european format #.###
     NumberFormat NumberFormatEU = NumberFormat.getNumberInstance(Locale.GERMAN);
     DecimalFormat decimalFormatEU = (DecimalFormat) NumberFormatEU;
 
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+
+        savedInstanceState.putInt("A_teamScorePoints", A_teamScorePoints);
+        savedInstanceState.putInt("A_TopsCounter" , A_TopsCounter);
+        savedInstanceState.putInt("A_BonusCounter", A_BonusCounter);
+        savedInstanceState.putInt("A1_numberOfTries", A1_numberOfTries);
+        savedInstanceState.putInt("A1_Bonus", A1_Bonus);
+
+        savedInstanceState.putLong("A_startTime", A_startTime);
+        savedInstanceState.putLong("A_timeInMilliseconds", A_timeInMilliseconds);
+        savedInstanceState.putLong("A_timeSwapBuff", A_timeSwapBuff);
+        savedInstanceState.putLong("A_updatedTime", A_updatedTime);
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+        super.onRestoreInstanceState(savedInstanceState);
+
+        A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
+        A_TopsCounter = savedInstanceState.getInt("A_TopsCounter");
+        A_BonusCounter = savedInstanceState.getInt("A_BonusCounter");
+        A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
+
+        A_startTime = savedInstanceState.getLong("A_startTime");
+        A_timeInMilliseconds = savedInstanceState.getLong("A_timeInMilliseconds");
+        A_timeSwapBuff = savedInstanceState.getLong("A_timeSwapBuff");
+        A_updatedTime = savedInstanceState.getLong("A_updatedTime");
+
+
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+    }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        reset();
+//    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        if (savedInstanceState != null) {
+//            // Restore value of members from saved state
+//            A_TopsCounter = savedInstanceState.getInt("A_TopsCounter");
+//            A_BonusCounter = savedInstanceState.getInt("A_BonusCounter");
+//            A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
+//            A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
+//        } else {
+//
+//            reset ();
+//        }
+
+
+
         setContentView(R.layout.activity_main);
 
 //  A_Time Counter
@@ -78,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
                 customHandler.postDelayed(updateTimerThread, 0);
                 disableButton(R.id.id_A1_btnStart);
                 enableButton(R.id.id_A1_btnQuit);
-                //TODO only if local variable BONUS is zero
                 enableButton(R.id.id_A1_btnTop);
                 if (A1_Bonus == 0) {
                     enableButton(R.id.id_A1_btnBonus);
@@ -167,8 +228,6 @@ public class MainActivity extends AppCompatActivity {
     public void A1_incrementNumberofTries() {
         A1_numberOfTries += 1;
         update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
-//        TextView updatedAttempt = (TextView) findViewById(R.id.id_A1_numberOfTries);
-//        updatedAttempt.setText(String.format("%01d", A1_numberOfTries));
     }
 
     //  A_Increment Bonus Counter
@@ -180,28 +239,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //  A_Increment Top Counter
-
-
-
     public void A_incrementTopCounterAndScore() {
         //    Points Per Route at each Try
         int[] R1T = {1500, 1200, 1080, 972, 875};
-        int i= A1_numberOfTries - 1; // -1 because array starts at 0.
+        int i = A1_numberOfTries - 1; // -1 because array starts at 0.
         A_teamScorePoints += R1T[i];
         A_TopsCounter += 1;
         update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
         update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
-        //A_updateValues(A_teamScorePoints, A_TopsCounter, A_BonusCounter);
+
+//        int[] R2T ={2500, 2000, 1800, 1620, 1458};
+//        int[] R3T ={320, 256, 230, 208, 187};
+
+
+
+
+
     }
 
-    //
-    // Deprecated - Came up with the "update_anyIntTextView" method
-    // A_Methods to Update scores
-    //
-//    public void A_updateValues(int score, int tops, int bonuses) {
+//
+//        Deprecated - Came up with the "update_anyIntTextView" method
+//        A_Methods to Update scores
+//
+//        public void A_updateValues(int score, int tops, int bonuses) {
 //
 //        TextView teamScore = (TextView) findViewById(R.id.id_A_teamScore);
-//       teamScore.setText(decimalFormatEU.format(score));
+//        teamScore.setText(decimalFormatEU.format(score));
 //        TextView teamTops = (TextView) findViewById(R.id.id_A_TopsCounter);
 //        teamTops.setText(String.valueOf(tops));
 //        TextView teamBonus = (TextView) findViewById(R.id.id_A_BonusCounter);
@@ -210,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
 
     //  Initialize all values
     public void reset() {
-        //TODO: I'm almost sure there should be a way of eseting all values to initial state - need to investigate. mabe something with clear()
+        //TODO: I'm almost sure there should be a way of reseting all values to initial state - need to investigate. mabe something with clear()
         //stop counter
         pauseCounter();
         //  A_reset variables and apply
@@ -261,12 +324,6 @@ public class MainActivity extends AppCompatActivity {
         Button currentButton = (Button) findViewById(thisbuttonId);
         currentButton.setEnabled(true);
     }
-
-//    //Resets values to original state
-//    public void resetView(int thisViewId) {
-//        View currentView = (View) findViewById(thisViewId);
-//        //currentView.setText
-//    }
 
     //TODO changes buttons to invisible
 
