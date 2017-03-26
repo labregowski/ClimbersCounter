@@ -1,7 +1,6 @@
 package com.example.android.climberscounter;
 
 import android.os.SystemClock;
-import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,26 +34,44 @@ public class MainActivity extends AppCompatActivity {
     //variables Team A
     // Global variables initialization
     int A_teamScorePoints = 0,
-        A_TopsCounter = 0,
-        A_BonusCounter = 0,
-        A1_numberOfTries = 0,
-        limitofTries = 5,
-        A1_Bonus = 0;
+            A_TopsCounter = 0,
+            A_BonusCounter = 0,
+            A1_numberOfTries = 0,
+            limitofTries = 5,
+            A1_Bonus = 0;
 
     //TimeCounter Variables
-    private TextView A_TimeCounter;  //TODO know why private !!
-    private Handler customHandler = new Handler();
-    private long A_startTime = 0L,
-                A_timeInMilliseconds = 0L,
-                A_timeSwapBuff = 0L,
-                A_updatedTime = 0L;
-    String A_elapsedTime = "00:00:00";
+    public TextView A_TimeCounter;  //TODO know why private !!
+    public Handler customHandler = new Handler();
+    public long A_startTime = 0L,
+            A_timeInMilliseconds = 0L,
+            A_timeSwapBuff = 0L,
+            A_updatedTime = 0L;
+    public String A_elapsedTime = "00:00:00";
+
+
+    //TODO when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero
+    public static String A_startTime_Key = "A_startTime_key";
+    public static String A_timeInMilliseconds_Key = "A_timeInMilliseconds_key";
+    public static String A_timeSwapBuff_Key = "A_timeSwapBuff_key";
+    public static String A_updatedTime_Key = "A_updatedTime_key";
+
+//EO TODO
 
 
     //Global methods to format numbers to european format #.###
     NumberFormat NumberFormatEU = NumberFormat.getNumberInstance(Locale.GERMAN);
     DecimalFormat decimalFormatEU = (DecimalFormat) NumberFormatEU;
 
+// TODO Fork - Tried outstate, instead of savedInstanceSet but doesn't work either
+//  @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        outState.putLong(A_startTime_Key, A_startTime);
+//        outState.putLong(A_timeInMilliseconds_Key, A_timeInMilliseconds);
+//        outState.putLong(A_timeSwapBuff_Key, A_timeSwapBuff);
+//        outState.putLong(A_updatedTime_Key,A_updatedTime);
+//        super.onSaveInstanceState(outState);
+//    }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -64,17 +81,17 @@ public class MainActivity extends AppCompatActivity {
         // killed and restarted.
 
         savedInstanceState.putInt("A_teamScorePoints", A_teamScorePoints);
-        savedInstanceState.putInt("A_TopsCounter" , A_TopsCounter);
+        savedInstanceState.putInt("A_TopsCounter", A_TopsCounter);
         savedInstanceState.putInt("A_BonusCounter", A_BonusCounter);
         savedInstanceState.putInt("A1_numberOfTries", A1_numberOfTries);
         savedInstanceState.putInt("A1_Bonus", A1_Bonus);
-        savedInstanceState.putString("A_elapsedTime",A_elapsedTime);
+        savedInstanceState.putString("A_elapsedTime", A_elapsedTime);
 
-//  //  TODO SOlving: when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero 
-        savedInstanceState.putLong("A_startTime", A_startTime);
-        savedInstanceState.putLong("A_timeInMilliseconds", A_timeInMilliseconds);
-        savedInstanceState.putLong("A_timeSwapBuff", A_timeSwapBuff);
-        savedInstanceState.putLong("A_updatedTime", A_updatedTime);
+//  //  TODO SOlving: when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero
+        savedInstanceState.putLong(A_startTime_Key, A_startTime);
+        savedInstanceState.putLong(A_timeInMilliseconds_Key, A_timeInMilliseconds);
+        savedInstanceState.putLong(A_timeSwapBuff_Key, A_timeSwapBuff);
+        savedInstanceState.putLong(A_updatedTime_Key, A_updatedTime);
 //   EO TODO
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -95,13 +112,13 @@ public class MainActivity extends AppCompatActivity {
         update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
 
         A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
-        update_anyTimer(R.id.id_A_TimeCounter,A_elapsedTime);
+        update_anyTimer(R.id.id_A_TimeCounter, A_elapsedTime);
 
 //  //  TODO SOlving: when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero
-        A_startTime = savedInstanceState.getLong("A_startTime");
-        A_timeInMilliseconds = savedInstanceState.getLong("A_timeInMilliseconds");
-        A_timeSwapBuff = savedInstanceState.getLong("A_timeSwapBuff");
-        A_updatedTime = savedInstanceState.getLong("A_updatedTime");
+        A_startTime = savedInstanceState.getLong(A_startTime_Key);
+        A_timeInMilliseconds = savedInstanceState.getLong(A_timeInMilliseconds_Key);
+        A_timeSwapBuff = savedInstanceState.getLong(A_timeSwapBuff_Key);
+        A_updatedTime = savedInstanceState.getLong(A_updatedTime_Key);
 //  EO TODO
 
         // Restore UI state from the savedInstanceState.
@@ -128,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
 //
 //            reset ();
 //        }
-
 
 
         setContentView(R.layout.activity_main);
@@ -223,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
             int mins = (int) ((A_updatedTime - hours * 3600000) / 60000);
             int secs = (int) ((A_updatedTime - hours * 3600000 - mins * 60000) / 1000);
             int decs = (int) ((A_updatedTime - hours * 3600000 - mins * 60000 - secs * 1000) / 100);
-            A_elapsedTime=hours + ":" + mins + ":"
+            A_elapsedTime = hours + ":" + mins + ":"
                     + String.format("%02d", secs)
                     + ":"
                     + String.format("%02d", decs);
@@ -260,14 +276,8 @@ public class MainActivity extends AppCompatActivity {
         A_TopsCounter += 1;
         update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
         update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
-
 //        int[] R2T ={2500, 2000, 1800, 1620, 1458};
 //        int[] R3T ={320, 256, 230, 208, 187};
-
-
-
-
-
     }
 
 //
@@ -337,10 +347,10 @@ public class MainActivity extends AppCompatActivity {
         Button currentButton = (Button) findViewById(thisbuttonId);
         currentButton.setEnabled(true);
     }
+}
 
     //TODO changes buttons to invisible
 
-}
 
 
 
