@@ -156,6 +156,12 @@
                                 android:gravity="center"
                                 android:padding="4dp"
                                 android:text="@string/btnStart" />
+                            <TextView
+                                android:id="@+id/A1_topPoints"
+                                style="@style/problemTitle"
+                                android:text=""
+                                android:layout_height="0dp"
+                                android:layout_width="wrap_content"/>
 
 
 

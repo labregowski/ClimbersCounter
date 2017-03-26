@@ -12,6 +12,7 @@ import android.os.Handler;
 
 import junit.framework.Test;
 
+import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -34,33 +35,38 @@ import static com.example.android.climberscounter.R.string.currentTry;
 public class MainActivity extends AppCompatActivity {
     //variables Team A
     // Global variables initialization
-    int A_teamScorePoints = 0,
+    int
+            A_teamScorePoints = 0,
             A_TopsCounter = 0,
             A_BonusCounter = 0,
             A1_numberOfTries = 0,
             limitofTries = 5,
-            A1_Bonus = 0;
-
-    Chronometer A_chronometer;
+            A1_Bonus = 0,
+            A1_Top =0;
 
     //TimeCounter Variables
-    public TextView A_TimeCounter;  //TODO know why private !!
+    public TextView A_TimeCounter;  //TODO know better difference between public and private in this case!!
     public Handler customHandler = new Handler();
     public long
             A_startTime = 0L,
             A_timeInMilliseconds = 0L,
             A_timeSwapBuff = 0L,
             A_updatedTime = 0L,
-           A_InstanceSavedTime=0L;
-    public String A_elapsedTime = "00:00:00";
-    //Variables for the instanceSet
-    public static String A_InstanceSavedTime_Key = "A_InstanceSavedTime_key";
+            A_InstanceSavedTime = 0L;
+    public String
+            A_elapsedTime = "00:00:00",
+            A_runningState = "paused";
+
+    //Variables for the instanceSet - I made these for debugging (as per instructor advice).will kee them here just to know I can do it like this
+    public static String
+            A_InstanceSavedTime_Key = "A_InstanceSavedTime_key",
+            A_runningState_Key = "A_runningState_key";
 
     //Global methods to format numbers to european format #.###
     NumberFormat NumberFormatEU = NumberFormat.getNumberInstance(Locale.GERMAN);
     DecimalFormat decimalFormatEU = (DecimalFormat) NumberFormatEU;
 
-//Save variable values   when user turns mobile
+    //Save variable values   when user turns mobile
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
 
@@ -73,8 +79,10 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putInt("A_BonusCounter", A_BonusCounter);
         savedInstanceState.putInt("A1_numberOfTries", A1_numberOfTries);
         savedInstanceState.putInt("A1_Bonus", A1_Bonus);
+        savedInstanceState.putInt("A1_Top", A1_Top);
         savedInstanceState.putString("A_elapsedTime", A_elapsedTime);
-        A_InstanceSavedTime= A_updatedTime;
+        savedInstanceState.putString(A_runningState_Key, A_runningState);
+        A_InstanceSavedTime = A_updatedTime;
         savedInstanceState.putLong(A_InstanceSavedTime_Key, A_InstanceSavedTime);
 
         super.onSaveInstanceState(savedInstanceState);
@@ -89,17 +97,31 @@ public class MainActivity extends AppCompatActivity {
         A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
         A_TopsCounter = savedInstanceState.getInt("A_TopsCounter");
         A_BonusCounter = savedInstanceState.getInt("A_BonusCounter");
+        A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
+        A_InstanceSavedTime = savedInstanceState.getLong(A_InstanceSavedTime_Key);
+        A_runningState = savedInstanceState.getString(A_runningState_Key);
+        A1_Bonus = savedInstanceState.getInt("A1_Bonus");
+        A1_Top = savedInstanceState.getInt("A1_Top");
         A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
 
         update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
         update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
         update_anyIntTextView(R.id.id_A_BonusCounter, A_BonusCounter);
         update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
-
-        A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
         update_anyTimer(R.id.id_A_TimeCounter, A_elapsedTime);
 
-        A_InstanceSavedTime = savedInstanceState.getLong(A_InstanceSavedTime_Key);
+        if (A1_Top != 0 || A1_numberOfTries == 5 ) {
+            disableButton(R.id.id_A1_btnStart);
+        }
+        ;
+//        if (A1_numberOfTries == 5) {
+//            disableButton(R.id.id_A1_btnStart);
+//        }
+//        ;
+        if (A_runningState == "running") {
+            A_setRunningStatus();
+        }
+        ;
 
         // Restore UI state from the savedInstanceState.
         // This bundle has also been passed to onCreate.
@@ -114,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//TODO - know why this was crashing  seemed a good metodology
 //        if (savedInstanceState != null) {
 //            // Restore value of members from saved state
 //            A_TopsCounter = savedInstanceState.getInt("A_TopsCounter");
@@ -125,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
 //
 //            reset ();
 //        }
-
 
         setContentView(R.layout.activity_main);
 
@@ -144,19 +165,21 @@ public class MainActivity extends AppCompatActivity {
         A1startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 A1_incrementNumberofTries();
-                A_startTime = SystemClock.uptimeMillis();
-                customHandler.postDelayed(updateTimerThread, 0);
-                disableButton(R.id.id_A1_btnStart);
-                enableButton(R.id.id_A1_btnQuit);
-                enableButton(R.id.id_A1_btnTop);
-                if (A1_Bonus == 0) {
-                    enableButton(R.id.id_A1_btnBonus);
-                } else {
-                }
-                ;
-//                A_chronometer.start();
+                A_setRunningStatus();
+//                A_startTime = SystemClock.uptimeMillis();
+//                customHandler.postDelayed(updateTimerThread, 0);
+//                disableButton(R.id.id_A1_btnStart);
+//                enableButton(R.id.id_A1_btnQuit);
+//                enableButton(R.id.id_A1_btnTop);
+//                if (A1_Bonus == 0) {
+//                    enableButton(R.id.id_A1_btnBonus);
+//                } else {
+//                }
+//                ;
             }
         });
+
+
 //   A1_Quit Button - pauses counter and increases number of attemps
         A1quitButton = (Button) findViewById(R.id.id_A1_btnQuit);
         A1quitButton.setOnClickListener(new View.OnClickListener() {
@@ -169,10 +192,8 @@ public class MainActivity extends AppCompatActivity {
                                                 // Enables StartButton only if #tries <5 !! 5 as variable
                                                 if (A1_numberOfTries < limitofTries) {
                                                     enableButton(R.id.id_A1_btnStart);
-                                                } else {
                                                 }
                                                 ;
-//                                                A_chronometer.stop();
                                             }
                                         }
         );
@@ -228,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
                     + String.format("%02d", decs);
             A_TimeCounter.setText(A_elapsedTime);
             customHandler.postDelayed(this, 0);
+            A_runningState = "running";
         }
     };
 
@@ -235,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
     public void pauseCounter() {
         A_timeSwapBuff += A_timeInMilliseconds;
         customHandler.removeCallbacks(updateTimerThread);
+        A_runningState = "paused";
     }
 
     public void A1_incrementNumberofTries() {
@@ -259,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
         A_TopsCounter += 1;
         update_anyIntTextView(R.id.id_A_TopsCounter, A_TopsCounter);
         update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
+        A1_Top += 1;
 //        int[] R2T ={2500, 2000, 1800, 1620, 1458};
 //        int[] R3T ={320, 256, 230, 208, 187};
     }
@@ -279,13 +303,13 @@ public class MainActivity extends AppCompatActivity {
 
     //  Initialize all values
     public void reset() {
-        //TODO: I'm almost sure there should be a way of reseting all values to initial state - need to investigate. mabe something with clear()
         //stop counter
         pauseCounter();
         //  A_reset variables and apply
         A_teamScorePoints = 0;
         A_TopsCounter = 0;
         A_BonusCounter = 0;
+        A1_Top=0;
         A1_Bonus = 0;
         A1_numberOfTries = 0;
         A_startTime = 0;
@@ -304,6 +328,20 @@ public class MainActivity extends AppCompatActivity {
         disableButton(R.id.id_A1_btnTop);
         enableButton(R.id.id_A1_btnStart);
     }
+
+    //Method to set running status (chronometer and button's status)
+    public void A_setRunningStatus() {
+        A_startTime = SystemClock.uptimeMillis();
+        customHandler.postDelayed(updateTimerThread, 0);
+        disableButton(R.id.id_A1_btnStart);
+        enableButton(R.id.id_A1_btnQuit);
+        enableButton(R.id.id_A1_btnTop);
+        if (A1_Bonus == 0) {
+            enableButton(R.id.id_A1_btnBonus);
+        }
+        ;
+    }
+    ;
 
 //Methods to update values
 
@@ -332,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-    //TODO changes buttons to invisible
+//TODO changes buttons to invisible
 
 
 
