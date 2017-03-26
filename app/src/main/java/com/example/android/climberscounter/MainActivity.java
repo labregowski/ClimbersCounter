@@ -3,6 +3,7 @@ package com.example.android.climberscounter;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -40,39 +41,26 @@ public class MainActivity extends AppCompatActivity {
             limitofTries = 5,
             A1_Bonus = 0;
 
+    Chronometer A_chronometer;
+
     //TimeCounter Variables
     public TextView A_TimeCounter;  //TODO know why private !!
     public Handler customHandler = new Handler();
-    public long A_startTime = 0L,
+    public long
+            A_startTime = 0L,
             A_timeInMilliseconds = 0L,
             A_timeSwapBuff = 0L,
-            A_updatedTime = 0L;
+            A_updatedTime = 0L,
+           A_InstanceSavedTime=0L;
     public String A_elapsedTime = "00:00:00";
-
-
-    //TODO when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero
-    public static String A_startTime_Key = "A_startTime_key";
-    public static String A_timeInMilliseconds_Key = "A_timeInMilliseconds_key";
-    public static String A_timeSwapBuff_Key = "A_timeSwapBuff_key";
-    public static String A_updatedTime_Key = "A_updatedTime_key";
-
-//EO TODO
-
+    //Variables for the instanceSet
+    public static String A_InstanceSavedTime_Key = "A_InstanceSavedTime_key";
 
     //Global methods to format numbers to european format #.###
     NumberFormat NumberFormatEU = NumberFormat.getNumberInstance(Locale.GERMAN);
     DecimalFormat decimalFormatEU = (DecimalFormat) NumberFormatEU;
 
-// TODO Fork - Tried outstate, instead of savedInstanceSet but doesn't work either
-//  @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        outState.putLong(A_startTime_Key, A_startTime);
-//        outState.putLong(A_timeInMilliseconds_Key, A_timeInMilliseconds);
-//        outState.putLong(A_timeSwapBuff_Key, A_timeSwapBuff);
-//        outState.putLong(A_updatedTime_Key,A_updatedTime);
-//        super.onSaveInstanceState(outState);
-//    }
-
+//Save variable values   when user turns mobile
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
 
@@ -86,16 +74,13 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putInt("A1_numberOfTries", A1_numberOfTries);
         savedInstanceState.putInt("A1_Bonus", A1_Bonus);
         savedInstanceState.putString("A_elapsedTime", A_elapsedTime);
+        A_InstanceSavedTime= A_updatedTime;
+        savedInstanceState.putLong(A_InstanceSavedTime_Key, A_InstanceSavedTime);
 
-//  //  TODO SOlving: when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero
-        savedInstanceState.putLong(A_startTime_Key, A_startTime);
-        savedInstanceState.putLong(A_timeInMilliseconds_Key, A_timeInMilliseconds);
-        savedInstanceState.putLong(A_timeSwapBuff_Key, A_timeSwapBuff);
-        savedInstanceState.putLong(A_updatedTime_Key, A_updatedTime);
-//   EO TODO
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    //Retrieve variable values  after user ends turning mobile
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
 
@@ -114,12 +99,7 @@ public class MainActivity extends AppCompatActivity {
         A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
         update_anyTimer(R.id.id_A_TimeCounter, A_elapsedTime);
 
-//  //  TODO SOlving: when recovering savedInstanceSet,it stops chronometer and then restarts nt qite from zero
-        A_startTime = savedInstanceState.getLong(A_startTime_Key);
-        A_timeInMilliseconds = savedInstanceState.getLong(A_timeInMilliseconds_Key);
-        A_timeSwapBuff = savedInstanceState.getLong(A_timeSwapBuff_Key);
-        A_updatedTime = savedInstanceState.getLong(A_updatedTime_Key);
-//  EO TODO
+        A_InstanceSavedTime = savedInstanceState.getLong(A_InstanceSavedTime_Key);
 
         // Restore UI state from the savedInstanceState.
         // This bundle has also been passed to onCreate.
@@ -174,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                 }
                 ;
+//                A_chronometer.start();
             }
         });
 //   A1_Quit Button - pauses counter and increases number of attemps
@@ -191,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                                                 } else {
                                                 }
                                                 ;
+//                                                A_chronometer.stop();
                                             }
                                         }
         );
@@ -233,8 +215,9 @@ public class MainActivity extends AppCompatActivity {
     //  A_Timer:RUN
     public Runnable updateTimerThread = new Runnable() {
         public void run() {
+
             A_timeInMilliseconds = SystemClock.uptimeMillis() - A_startTime;
-            A_updatedTime = A_timeSwapBuff + A_timeInMilliseconds;
+            A_updatedTime = A_timeSwapBuff + A_timeInMilliseconds + A_InstanceSavedTime;
             int hours = (int) (A_updatedTime / 3600000);
             int mins = (int) ((A_updatedTime - hours * 3600000) / 60000);
             int secs = (int) ((A_updatedTime - hours * 3600000 - mins * 60000) / 1000);
