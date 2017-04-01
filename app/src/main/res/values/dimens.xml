@@ -1,0 +1,42 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+
+    <dimen name="textHorPadding">4dp</dimen>
+    <!--will need a hdpi custom value-->
+    <dimen name="titleFontSize">22sp</dimen>
+    <!-- / -->
+    <!--dimensions in main activity-->
+    <dimen name="mainLayoutTopMargin">5dp</dimen>
+    <dimen name="HScrollLayoutHeight">130dp</dimen>
+    <dimen name="ContactsTableBottomMargin">-10dp</dimen>
+    <!--dimensions in main styles-->
+    <!--Logo-->
+    <dimen name="LogoBottomMargin">20dp</dimen>
+    <dimen name="LogoMaxWidth">50dp</dimen>
+    <dimen name="LogoLeftMargin">5dp</dimen>
+    <!--General-->
+    <dimen name="DefaultBottomMargin">20dp</dimen>
+    <dimen name="InnerElementsGeneralBottomMargin">10dp</dimen>
+    <dimen name="InnerElementsGeneralPadding">10dp</dimen>
+    <dimen name="NoBottomMargin">0dp</dimen>
+    <dimen name="NoMargin">0dp</dimen>
+    <dimen name="Width0_toUseWeight">0dp</dimen>
+    <!--GloblaScroll-->
+    <dimen name="GlobalScrolSidePadding">12dp</dimen>
+    <!--HorizontalScroll-->
+    <dimen name="HorScrollPhotoRRightMargin">8dp</dimen>
+    <!--Table Rows-->
+    <dimen name="tblRowHeight">45dp</dimen>
+    <dimen name="tblRowTopMargin">6dp</dimen>
+    <!--Social Icons-->
+    <dimen name="SocialIconsPadding">12dp</dimen>
+    <dimen name="SocialIconsTableHeight">60dp</dimen>
+
+    <!--Font-Sizes-->
+    <dimen name="BasicTexFontSize">15sp</dimen>
+    <dimen name="StickerFontSize">13sp</dimen>
+    <dimen name="BoxTitleFontSize">13sp</dimen>
+    <dimen name="TableSecondColumnFontSize">12sp</dimen>
+</resources>

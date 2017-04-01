@@ -1,250 +1,358 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.climberscounter.MainActivity">
+    <!--BACKGROUND IMAGE -->
+    <ImageView
+        android:id="@+id/BackgroundImage"
+        style="@style/BckgImg"
+        android:src="@drawable/boulderimage"
+        android:contentDescription="@string/BackgroundImageDesc"
+        />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+    <LinearLayout style="@style/HorMatchParent_VertWrap">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/Black"
+            app:contentInsetEnd="6dp"
+            app:contentInsetLeft="6dp"
+            app:contentInsetRight="6dp"
+            app:contentInsetStart="6dp"></android.support.v7.widget.Toolbar>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            style="@style/hMatchParent_vWrapContent"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/Black">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:text="@string/teamA"
-                android:textColor="#616161"
-                android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/Logo"
+                style="@style/LogoStyle"
+                android:layout_width="45dp"
+                android:layout_marginLeft="8dp"
+                android:contentDescription="@string/LogoDesc"
+                app:srcCompat="@drawable/nmeblacksmall" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/hMatchParent_vWrapContent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="26dp">
+                android:layout_margin="6dp"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:background="@color/opaque_black"
+                android:orientation="vertical"
+                android:padding="6dp"
+                android:paddingBottom="0dp">
 
                 <TextView
-                    android:id="@+id/id_A_teamScore"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="4"
-                    android:fontFamily="sans-serif-light"
+                    style="@style/hMatchParent_vWrapContent"
+                    android:layout_marginBottom="4dp"
+                    android:background="@color/Black"
+                    android:fontFamily="sans-serif-medium"
                     android:gravity="center"
-                    android:text="@string/defaultScoreCounter"
-                    android:textColor="#000000"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="3dp"
+                    android:text="@string/teamA"
+                    android:textColor="@color/White"
                     android:textSize="20sp" />
 
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/id_A_TopsCounter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:text="@string/defaultScoreCounter" />
-
-                    <TextView
-                        android:id="@+id/id_A_TopsLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_toRightOf="@id/id_A_TopsCounter"
-                        android:text="Tops" />
-
-                    <TextView
-                        android:id="@+id/id_A_BonusCounter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/defaultBonusCounter" />
-
-                    <TextView
-                        android:id="@+id/id_A_BonusLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/id_A_BonusCounter"
-                        android:text="Bonus" />
-
-                    <TextView
-                        android:id="@+id/id_A_TimeCounter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:text="@string/defaultTimerVal" />
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <ScrollView style="@style/hMatchParent_vWrapContent">
+                <TextView
+                    style="@style/hMatchParent_vWrapContent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="-7dp"
+                    android:background="@color/colorAccent" />
 
                 <LinearLayout
                     style="@style/hMatchParent_vWrapContent"
-                    android:orientation="vertical">
-
-                    <View style="@style/horizontalSeparator"></View>
+                    android:layout_marginBottom="12dp">
 
                     <TextView
-                        style="@style/problemTitle"
-                        android:text="@string/route1" />
+                        android:id="@+id/id_A_teamScore"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="9"
+                        android:background="#99ff4182"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:text="@string/defaultScoreCounter"
+                        android:textColor="#fff"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
 
-                    <RelativeLayout style="@style/hMatchParent_vWrapContent">
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/id_A1txtTry"
-                            android:layout_alignParentLeft="true"
-                            style="@style/minorLabel"
-                            android:text="@string/tries" />
+                        <LinearLayout
+                            android:id="@+id/topsAndLbl_A"
+                            style="@style/smallWrapper">
 
-                        <TextView
-                            android:id="@+id/id_A1_numberOfTries"
-                            android:layout_toRightOf="@id/id_A1txtTry"
-                            style="@style/TryLeft"
-                            android:text="@string/currentTry" />
+                            <TextView
+                                android:id="@+id/id_A_topsCounter"
+                                style="@style/rightSideTxtViewInSmallWrapper"
+                                android:text="@string/defaultTopsCounter" />
 
-                        <TextView
-                            android:id="@+id/id_A1_possibleTries"
-                            android:layout_toRightOf="@id/id_A1_numberOfTries"
-                            style="@style/TryRight"
-                            android:text="@string/outOfPossibleTries" />
-                        <TextView
-                            android:id="@+id/id_A1_timerValue"
-                            android:layout_alignParentRight="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="0dp"
-                            android:text="@string/defaultTimerVal"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/id_A_TopsLabel"
+                                style="@style/txtViewInSmallWrapper"
+                                android:text="@string/top" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/bonusAndLbl_A"
+                            style="@style/smallWrapper"
+                            android:layout_below="@+id/topsAndLbl_A">
+
+                            <TextView
+                                android:id="@+id/id_A_bonusCounter"
+                                style="@style/rightSideTxtViewInSmallWrapper"
+                                android:text="@string/defaultBonusCounter" />
+
+                            <TextView
+                                android:id="@+id/id_A_BonusLabel"
+                                style="@style/txtViewInSmallWrapper"
+                                android:text="@string/bonus" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/chronTot_A"
+                            style="@style/smallWrapper"
+                            android:layout_below="@+id/bonusAndLbl_A"
+                            android:layout_marginBottom="0dp">
+
+                            <TextView
+                                android:id="@+id/id_A_timeCounter"
+                                style="@style/topChronTxtViewInSmallWrapper"
+                                android:text="@string/defaultTimerVal" />
+                        </LinearLayout>
 
                     </RelativeLayout>
 
+                </LinearLayout>
+
+                <ScrollView
+                    style="@style/hMatchParent_vWrapContent"
+                    android:padding="0dp"
+                    android:layout_marginBottom="0dp">
+
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:id="@+id/A1_wrapProblem"
+                        style="@style/hMatchParent_vWrapContent"
+                        android:orientation="vertical"
+                        android:padding="0dp">
 
-                        <LinearLayout style="@style/hMatchParent_vWrapContent">
 
-                            <Button
-                                android:id="@+id/id_A1_btnStart"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:gravity="center"
-                                android:padding="4dp"
-                                android:text="@string/btnStart" />
+                        <LinearLayout
+                            style="@style/hWrap_vWrap"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical">
+
+                            <View style="@style/A_clbRouteTitleBar" />
+
                             <TextView
-                                android:id="@+id/A1_topPoints"
                                 style="@style/problemTitle"
-                                android:text=""
-                                android:layout_height="0dp"
-                                android:layout_width="wrap_content"/>
-
-
-
+                                android:text="@string/route1" />
                         </LinearLayout>
 
-                        <LinearLayout style="@style/hMatchParent_vWrapContent">
+                        <RelativeLayout
+                            style="@style/hMatchParent_vWrapContent"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_marginTop="4dp"
+                            android:padding="0dp">
 
-                            <Button
-                                android:id="@+id/id_A1_btnQuit"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:layout_weight="3"
-                                android:gravity="center"
-                                android:padding="4dp"
-                                android:text="@string/btnQuit" />
+                            <LinearLayout style="@style/tryCounterWraper">
 
-                            <Button
-                                android:id="@+id/id_A1_btnBonus"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:layout_weight="3"
-                                android:gravity="center"
-                                android:padding="4dp"
-                                android:text="@string/bonus" />
+                                <TextView
+                                    android:id="@+id/id_txtTry"
+                                    style="@style/hWrap_vWrap"
+                                    android:text="@string/tries"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/White"
+                                    android:textSize="13sp" />
 
-                            <Button
-                                android:id="@+id/id_A1_btnTop"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:layout_weight="2"
-                                android:gravity="center"
-                                android:padding="4dp"
-                                android:text="@string/top" />
+                                <TextView
+                                    android:id="@+id/id_A1_numberOfTries"
+                                    style="@style/TryLeft"
+                                    android:text="@string/currentTry"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/id_A1_possibleTries"
+                                    style="@style/TryRight"
+                                    android:text="@string/outOfPossibleTries" />
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:id="@+id/id_A1_timeCounter"
+                                style="@style/smallWrapper"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="0dp"
+                                android:text="@string/defaultTimerVal"
+                                android:textColor="#fff"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout style="@style/hMatchParent_vWrapContent"
+                                android:padding="0dp"
+                                android:layout_marginBottom="0dp">
+
+
+                                <Button
+                                    android:id="@+id/id_A1_btnStart"
+                                    style="@style/Widget.AppCompat.Button.Colored"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:alpha="1"
+                                    android:gravity="center"
+                                    android:padding="0dp"
+                                    android:text="@string/btnStart" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/A1_topPointsWrapper"
+                                style="@style/hMatchParent_vWrapContent"
+                                android:padding="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:gravity="right">
+                                <TextView
+                                    android:id="@+id/id_A1_topPoints"
+                                    style="@style/problemTitle"
+                                    android:layout_height="wrap_content"
+                                    android:text="1.200"
+                                    android:background="#90000000"
+                                    android:textColor="@color/colorAccent"
+                                    android:padding="1dp"
+
+                                    />
+                                <TextView
+                                    android:id="@+id/id_topPointsLbl"
+                                    style="@style/problemTitle"
+                                    android:layout_height="wrap_content"
+                                    android:text="points"
+                                    android:background="#90000000"
+                                    android:textColor="@color/colorAccent"
+                                    android:padding="1dp"
+                                    />
+
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/hMatchParent_vWrapContent"
+                                android:padding="0dp"
+                                android:layout_marginBottom="0dp">
+
+                                <Button
+                                    android:id="@+id/id_A1_btnQuit"
+                                    style="@style/Widget.AppCompat.Button.Colored"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_weight="3"
+                                    android:gravity="center"
+                                    android:padding="0dp"
+                                    android:text="@string/btnQuit" />
+
+                                <Button
+                                    android:id="@+id/id_A1_btnBonus"
+                                    style="@style/Widget.AppCompat.Button.Colored"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_weight="3"
+                                    android:gravity="center"
+                                    android:padding="0dp"
+                                    android:text="@string/bonus" />
+
+                                <Button
+                                    android:id="@+id/id_A1_btnTop"
+                                    style="@style/Widget.AppCompat.Button.Colored"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_weight="2"
+                                    android:gravity="center"
+                                    android:padding="0dp"
+                                    android:text="@string/top" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </ScrollView>
+                </ScrollView>
+
+            </LinearLayout>
+
+
+            <View style="@style/verticalSeparator"></View>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/teamB"
+                    android:textColor="#616161"
+                    android:textSize="14sp" />
+
+                <Chronometer
+                    android:id="@+id/A_chronometerTotals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/defaultTimerVal" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-
-        <View style="@style/verticalSeparator"></View>
-
-
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/id_btnReset"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:text="vvv B"
-                android:textColor="#616161"
-                android:textSize="14sp" />
-
-            <Chronometer
-                android:id="@+id/A_chronometerTotals"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/defaultTimerVal"/>
-
-        </LinearLayout>
-
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="resetScores"
+            android:text="reset" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/id_btnReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="resetScores"
-        android:text="reset" />
+</FrameLayout>
 
-</RelativeLayout>
