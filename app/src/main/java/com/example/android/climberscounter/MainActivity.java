@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                     B2_timeCounter;
     public long
             A_updatedTime = 0L,
-            //A_timeInMilliseconds = 0L, //shouldn't need this but somehow onCreate asks for it
 
             A1_timeInMilliseconds = 0L,
             A1_timeSwapBuff = 0L,
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             B2_startTime = 0L,
             B2_updatedTime = 0L,
             B2_InstanceSavedTime = 0L;
-
 
     public String
             A_elapsedTime = "00:00:0",
@@ -102,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
             A1_customHandler.postDelayed(this, 0);
             A1_runningState = "running";
-
         }
     };
+
     //  A2_Timer:RUN
     public Runnable A2_timerThread = new Runnable() {
         public void run() {
@@ -118,10 +116,8 @@ public class MainActivity extends AppCompatActivity {
 
             A2_customHandler.postDelayed(this, 0);
             A2_runningState = "running";
-
         }
     };
-
 
     //  B1_Timer:RUN
     public Runnable B1_timerThread = new Runnable() {
@@ -136,8 +132,6 @@ public class MainActivity extends AppCompatActivity {
 
             B1_customHandler.postDelayed(this, 0);
             B1_runningState = "running";
-
-
         }
     };
     //  B2_Timer:RUN
@@ -153,8 +147,6 @@ public class MainActivity extends AppCompatActivity {
 
             B2_customHandler.postDelayed(this, 0);
             B2_runningState = "running";
-
-
         }
     };
 
@@ -193,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
             B2_Bonus = 0,
             B2_Top = 0,
             B2_topPoints = 0;
-
 
     //Global methods to format numbers to european format #.###
     NumberFormat NumberFormatEU = NumberFormat.getNumberInstance(Locale.GERMAN);
@@ -574,11 +565,9 @@ public class MainActivity extends AppCompatActivity {
 //        // This bundle has also been passed to onCreate.
 //    }
 
-
     @Override
     protected void onStart() {
         super.onStart();
-//        R.id.id_B1_btnStart.setBackgroundResource("#000") ;
         reset();
     }
 
@@ -596,26 +585,25 @@ public class MainActivity extends AppCompatActivity {
 
             A1_elapsedTime =savedInstanceState.getString("A1_elapsedTime");
             A1_InstanceSavedTime = savedInstanceState.getLong(A1_InstanceSavedTime_Key);
-            A2_elapsedTime =savedInstanceState.getString("A2_elapsedTime");
-            A2_InstanceSavedTime = savedInstanceState.getLong(A2_InstanceSavedTime_Key);
-
             A1_runningState = savedInstanceState.getString(A1_runningState_Key);
-            A2_runningState = savedInstanceState.getString(A2_runningState_Key);
-            update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
-            update_anyIntTextView(R.id.id_A_topsCounter, A_topsCounter);
-            update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
-            update_anyTimer(R.id.id_A_timeCounter, A_elapsedTime);
-
             A1_Bonus = savedInstanceState.getInt("A1_Bonus");
             A1_Top = savedInstanceState.getInt("A1_Top");
             A1_topPoints = savedInstanceState.getInt("A1_topPoints");
             A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
 
+
+            A2_elapsedTime =savedInstanceState.getString("A2_elapsedTime");
+            A2_InstanceSavedTime = savedInstanceState.getLong(A2_InstanceSavedTime_Key);
+            A2_runningState = savedInstanceState.getString(A2_runningState_Key);
             A2_Bonus = savedInstanceState.getInt("A2_Bonus");
             A2_Top = savedInstanceState.getInt("A2_Top");
             A2_topPoints = savedInstanceState.getInt("A2_topPoints");
             A2_numberOfTries = savedInstanceState.getInt("A2_numberOfTries");
 
+            update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
+            update_anyIntTextView(R.id.id_A_topsCounter, A_topsCounter);
+            update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
+            update_anyTimer(R.id.id_A_timeCounter, A_elapsedTime);
 
             update_anyTimer(R.id.id_A1_timeCounter, A1_elapsedTime);
             update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
@@ -632,26 +620,24 @@ public class MainActivity extends AppCompatActivity {
 
             B1_elapsedTime =savedInstanceState.getString("B1_elapsedTime");
             B1_InstanceSavedTime = savedInstanceState.getLong(B1_InstanceSavedTime_Key);
-            B2_elapsedTime =savedInstanceState.getString("B2_elapsedTime");
-            B2_InstanceSavedTime = savedInstanceState.getLong(B2_InstanceSavedTime_Key);
-
             B1_runningState = savedInstanceState.getString(B1_runningState_Key);
-            B2_runningState = savedInstanceState.getString(B2_runningState_Key);
-            update_anyIntTextView(R.id.id_B_teamScore, B_teamScorePoints);
-            update_anyIntTextView(R.id.id_B_topsCounter, B_topsCounter);
-            update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
-            update_anyTimer(R.id.id_B_timeCounter, B_elapsedTime);
-
             B1_Bonus = savedInstanceState.getInt("B1_Bonus");
             B1_Top = savedInstanceState.getInt("B1_Top");
             B1_topPoints = savedInstanceState.getInt("B1_topPoints");
             B1_numberOfTries = savedInstanceState.getInt("B1_numberOfTries");
 
+            B2_runningState = savedInstanceState.getString(B2_runningState_Key);
+            B2_elapsedTime =savedInstanceState.getString("B2_elapsedTime");
+            B2_InstanceSavedTime = savedInstanceState.getLong(B2_InstanceSavedTime_Key);
             B2_Bonus = savedInstanceState.getInt("B2_Bonus");
             B2_Top = savedInstanceState.getInt("B2_Top");
             B2_topPoints = savedInstanceState.getInt("B2_topPoints");
             B2_numberOfTries = savedInstanceState.getInt("B2_numberOfTries");
 
+            update_anyIntTextView(R.id.id_B_teamScore, B_teamScorePoints);
+            update_anyIntTextView(R.id.id_B_topsCounter, B_topsCounter);
+            update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
+            update_anyTimer(R.id.id_B_timeCounter, B_elapsedTime);
 
             update_anyTimer(R.id.id_B1_timeCounter, B1_elapsedTime);
             update_anyIntTextView(R.id.id_B1_numberOfTries, B1_numberOfTries);
@@ -660,7 +646,6 @@ public class MainActivity extends AppCompatActivity {
             update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
             update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
             update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
-
 
             if (A1_runningState.equals("running") ) {
                 A1_setRunningStatus();
@@ -733,8 +718,6 @@ public class MainActivity extends AppCompatActivity {
                 enableView(R.id.B2_topPointsWrapper);
             }
             ;
-
-
 
         } else {
                 //nothing here, for now
@@ -831,6 +814,7 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                         }
         );
+
 //   A2_Quit Button - pauses counter and increases number of attempts
         A2quitButton = (Button) findViewById(R.id.id_A2_btnQuit);
         A2quitButton.setOnClickListener(new View.OnClickListener() {
@@ -874,6 +858,7 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                         }
         );
+
 //   B2_Quit Button - pauses counter and increases number of attempts
         B2quitButton = (Button) findViewById(R.id.id_B2_btnQuit);
         B2quitButton.setOnClickListener(new View.OnClickListener() {
@@ -906,9 +891,10 @@ public class MainActivity extends AppCompatActivity {
                                              }
                                          }
         );
+
 //   A2_Bonus Button - Increases Bonus counter
-        A1bonusButton = (Button) findViewById(R.id.id_A2_btnBonus);
-        A1bonusButton.setOnClickListener(new View.OnClickListener() {
+        A2bonusButton = (Button) findViewById(R.id.id_A2_btnBonus);
+        A2bonusButton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View view) {
                                                  A2_Bonus = 1;
                                                  A_incrementBonusCounter();
@@ -916,7 +902,6 @@ public class MainActivity extends AppCompatActivity {
                                              }
                                          }
         );
-
 
 //   B1_Bonus Button - Increases Bonus counter
         B1bonusButton = (Button) findViewById(R.id.id_B1_btnBonus);
@@ -928,9 +913,10 @@ public class MainActivity extends AppCompatActivity {
                                              }
                                          }
         );
+
 //   B2_Bonus Button - Increases Bonus counter
-        B1bonusButton = (Button) findViewById(R.id.id_B2_btnBonus);
-        B1bonusButton.setOnClickListener(new View.OnClickListener() {
+        B2bonusButton = (Button) findViewById(R.id.id_B2_btnBonus);
+        B2bonusButton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View view) {
                                                  B2_Bonus = 1;
                                                  B_incrementBonusCounter();
@@ -938,9 +924,6 @@ public class MainActivity extends AppCompatActivity {
                                              }
                                          }
         );
-
-
-
 
 //   A1_Top Button  -  pauses counter and increases topCounter
         A1topButton = (Button) findViewById(R.id.id_A1_btnTop);
@@ -963,9 +946,10 @@ public class MainActivity extends AppCompatActivity {
                                            }
                                        }
         );
+
 //   A2_Top Button  -  pauses counter and increases topCounter
-        A1topButton = (Button) findViewById(R.id.id_A2_btnTop);
-        A1topButton.setOnClickListener(new View.OnClickListener() {
+        A2topButton = (Button) findViewById(R.id.id_A2_btnTop);
+        A2topButton.setOnClickListener(new View.OnClickListener() {
                                            public void onClick(View view) {
                                                A2pauseCounter();
                                                A_incrementTopCounterAndScore(2); //NOTE: in Route2 itwill be (2)
@@ -984,6 +968,7 @@ public class MainActivity extends AppCompatActivity {
                                            }
                                        }
         );
+
 
 //   B1_Top Button  -  pauses counter and increases topCounter
         B1topButton = (Button) findViewById(R.id.id_B1_btnTop);
@@ -1006,12 +991,13 @@ public class MainActivity extends AppCompatActivity {
                                            }
                                        }
         );
+
 //   B2_Top Button  -  pauses counter and increases topCounter
-        B1topButton = (Button) findViewById(R.id.id_B2_btnTop);
-        B1topButton.setOnClickListener(new View.OnClickListener() {
+        B2topButton = (Button) findViewById(R.id.id_B2_btnTop);
+        B2topButton.setOnClickListener(new View.OnClickListener() {
                                            public void onClick(View view) {
                                                B2pauseCounter();
-                                               B_incrementTopCounterBndScore(2); //NOTE: in Route2 itwill be (2)
+                                               B_incrementTopCounterBndScore(2); //NOTE: in Route2 it is 2
                                                disableButton(R.id.id_B2_btnQuit);
                                                disableButton(R.id.id_B2_btnBonus);
                                                disableButton(R.id.id_B2_btnTop);
@@ -1037,7 +1023,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Stringify anyting
+//Stringify anyting
     public String stringifyTime(long time) {
         int hours = (int) (time / 3600000);
         int mins = (int) ((time - hours * 3600000) / 60000);
@@ -1052,14 +1038,14 @@ public class MainActivity extends AppCompatActivity {
         return stringifiedTime;
     }
 
-    //  A_Timer:PAUSE
+//  A_Timer:PAUSE
     public void A1pauseCounter() {
         A1_timeSwapBuff += A1_timeInMilliseconds;
         A1_customHandler.removeCallbacks(A1_timerThread);
         A1_runningState = "paused";
     }
 
-    //  B_Timer:PBUSE
+//  B_Timer:PAUSE
     public void B1pauseCounter() {
         B1_timeSwapBuff += B1_timeInMilliseconds;
         B1_customHandler.removeCallbacks(B1_timerThread);
@@ -1078,7 +1064,7 @@ public class MainActivity extends AppCompatActivity {
         B2_runningState = "paused";
     }
 
-    //TODO - prepare a method that uses incoming variable to increment number of tries (not to have all these similar methods
+//TODO - prepare a method that uses incoming variable to increment number of tries (not to have all these similar methods
     public void A1_incrementNumberofTries() {
         A1_numberOfTries += 1;
         update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
@@ -1088,14 +1074,13 @@ public class MainActivity extends AppCompatActivity {
         update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
     }
 
-    //  A_Increment Bonus Counter
+//  A_Increment Bonus Counter
     public void A_incrementBonusCounter() {
         A_bonusCounter += 1;
         update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
     }
 
-
-    //  A_Increment Top Counter
+//  A_Increment Top Counter
     public void A_incrementTopCounterAndScore(int route) {
         A_topsCounter += 1;
         switch (route) {
@@ -1128,19 +1113,19 @@ public class MainActivity extends AppCompatActivity {
         B1_numberOfTries += 1;
         update_anyIntTextView(R.id.id_B1_numberOfTries, B1_numberOfTries);
     }
+
     public void B2_incrementNumberofTries() {
         B2_numberOfTries += 1;
         update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
     }
 
-    //  B_Increment Bonus Counter
+//  B_Increment Bonus Counter
     public void B_incrementBonusCounter() {
         B_bonusCounter += 1;
         update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
     }
 
-
-    //  B_Increment Top Counter
+//  B_Increment Top Counter
     public void B_incrementTopCounterBndScore(int route) {
         B_topsCounter += 1;
         switch (route) {
@@ -1169,8 +1154,6 @@ public class MainActivity extends AppCompatActivity {
         update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
     }
 
-
-//
 //        Update 3 views atthe same time
 // Deprecated - Came up with the "update_anyIntTextView" method
 //        A_Methods to Update scores
@@ -1185,7 +1168,7 @@ public class MainActivity extends AppCompatActivity {
 //        teamBonus.setText(String.valueOf(bonuses));
 //    }
 
-    //  Initialize all values
+//  Initialize all values
     public void reset() {
         //stop counter
         A1pauseCounter();
@@ -1236,7 +1219,7 @@ public class MainActivity extends AppCompatActivity {
         update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
         update_anyTimer(R.id.id_A2_timeCounter, A2_elapsedTime);
 
-        //  A2_reset button states
+        //  A1_reset button states
         disableButton(R.id.id_A1_btnQuit);
         disableButton(R.id.id_A1_btnBonus);
         disableButton(R.id.id_A1_btnTop);
@@ -1330,7 +1313,6 @@ public class MainActivity extends AppCompatActivity {
 
         disableButton(id_A2_btnStart);//IMPORTANT - disable the other button - the atlete cannot perform two at same  time
         disableButton(id_A3_btnStart);
-
     }
     ;
 
@@ -1382,8 +1364,8 @@ public class MainActivity extends AppCompatActivity {
         disableButton(id_B3_btnStart);
     }
     ;
-
-    //Method to set running status (chronometer and button's status)//TODO understand better arrays and implement in method above for 12 routes
+    //TODO understand better arrays and implement in method above for 12 routes
+    //Method to set running status (chronometer and button's status)
         //            public  List<Integer> A_quitBtnIDs = new ArrayList<>(),
         //                    List<Integer> A_startButtons = new ArrayList<>();
         //
@@ -1396,8 +1378,8 @@ public class MainActivity extends AppCompatActivity {
         //                A_startButtons.add(id_A1_btnStart);
         //                A_startButtons.add(id_A2_btnStart);
         //            }
-        //            TODO   enableButton think shuld be like this. implement when at ease with formula
-        //                  (A_quitBtnIDs.get(i));
+        //
+        //      calling buttons:            (A_quitBtnIDs.get(i));
 
 //Methods to update textViews and ButtonViews
 
@@ -1439,8 +1421,6 @@ public class MainActivity extends AppCompatActivity {
         currentView.setVisibility(View.VISIBLE);
     }
 }
-
-//TODO changes buttons to invisible
 
 
 
