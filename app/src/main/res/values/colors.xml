@@ -6,17 +6,27 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="almostAccent">#99ff4182</color>
+
+    <color name="roxo">#7e5f9c</color>
+
     <color name="lightText">#b4b2b2</color>
     <color name="darkText">#000</color>
 
 
-    <color name="Black">#000000</color>
+
     <color name="BluishBlack">#133954</color>
     <color name="White">#ffffff</color>
+
     <color name="LightBlue">#26aadd</color>
 
+
+    <color name="Black">#000000</color>
     <color name="AlmostBlack">#212729</color>
 
 
+
+    <color name="opaqueBlack90">#90000000</color>
+    <color name="opaqueBlack85">#85000000</color>
     <color name="opaque_black">#4c000000</color>
 </resources>

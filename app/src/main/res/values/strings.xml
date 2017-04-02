@@ -12,6 +12,7 @@
     <string name="top">top</string>
     <string name="bonus">bonus</string>
     <string name="tries">try</string>
+    <string name="points">points</string>
     <string name="currentTry">0</string>
     <string name="outOfPossibleTries">/5</string>
     <!-- Buttons -->
@@ -19,13 +20,13 @@
     <string name="btnQuit">quit</string>
     <string name="btnBonus">bonus</string>
     <string name="btnTop">top</string>
-    <string name="btnReset">reset Counters</string>
+    <string name="btnReset">reset</string>
 
 <!-- Teams -->
     <string name="teamA">Asam Ondra</string>
     <string name="teamB">Chris Sharma</string>
 <!-- Default Text Values -->
-    <string name="defaultScoreCounter">12.000</string>
+    <string name="defaultScoreCounter">0</string>
     <string name="defaultTopsCounter">0</string>
     <string name="defaultBonusCounter">0</string>
     <string name="defaultTimerVal">00:00:0</string>
