@@ -189,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
     //Global methods to format numbers to european format #.###
     NumberFormat NumberFormatEU = NumberFormat.getNumberInstance(Locale.GERMAN);
     DecimalFormat decimalFormatEU = (DecimalFormat) NumberFormatEU;
-//    setSupportActionBar(toolbar);
 
     //Save variable values when user turns mobile
     @Override
@@ -255,320 +254,303 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Retrieve variable values  after user ends turning mobile
-//    @Override
-//    public void onRestoreInstanceState(Bundle savedInstanceState) {
-//
-//        super.onRestoreInstanceState(savedInstanceState);
-//
-//        A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
-//        A_topsCounter = savedInstanceState.getInt("A_topsCounter");
-//        A_bonusCounter = savedInstanceState.getInt("A_bonusCounter");
-//        A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
-//
-//        A1_elapsedTime =savedInstanceState.getString("A1_elapsedTime");
-//        A1_InstanceSavedTime = savedInstanceState.getLong(A1_InstanceSavedTime_Key);
-//        A2_elapsedTime =savedInstanceState.getString("A2_elapsedTime");
-//        A2_InstanceSavedTime = savedInstanceState.getLong(A2_InstanceSavedTime_Key);
-//
-//        A1_runningState = savedInstanceState.getString(A1_runningState_Key);
-//        A2_runningState = savedInstanceState.getString(A2_runningState_Key);
-//        update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
-//        update_anyIntTextView(R.id.id_A_topsCounter, A_topsCounter);
-//        update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
-//        update_anyTimer(R.id.id_A_timeCounter, A_elapsedTime);
-//
-//        A1_Bonus = savedInstanceState.getInt("A1_Bonus");
-//        A1_Top = savedInstanceState.getInt("A1_Top");
-//        A1_topPoints = savedInstanceState.getInt("A1_topPoints");
-//        A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
-//
-//        A2_Bonus = savedInstanceState.getInt("A2_Bonus");
-//        A2_Top = savedInstanceState.getInt("A2_Top");
-//        A2_topPoints = savedInstanceState.getInt("A2_topPoints");
-//        A2_numberOfTries = savedInstanceState.getInt("A2_numberOfTries");
-//
-//
-//        update_anyTimer(R.id.id_A1_timeCounter, A1_elapsedTime);
-//        update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
-//        update_anyIntTextView(R.id.id_A1_topPoints, A1_topPoints);
-//
-//        update_anyTimer(R.id.id_A2_timeCounter, A2_elapsedTime);
-//        update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
-//        update_anyIntTextView(R.id.id_A2_topPoints, A2_topPoints);
-//
-//        B_teamScorePoints = savedInstanceState.getInt("B_teamScorePoints");
-//        B_topsCounter = savedInstanceState.getInt("B_topsCounter");
-//        B_bonusCounter = savedInstanceState.getInt("B_bonusCounter");
-//        B_elapsedTime = savedInstanceState.getString("B_elapsedTime");
-//
-//        B1_elapsedTime =savedInstanceState.getString("B1_elapsedTime");
-//        B1_InstanceSavedTime = savedInstanceState.getLong(B1_InstanceSavedTime_Key);
-//        B2_elapsedTime =savedInstanceState.getString("B2_elapsedTime");
-//        B2_InstanceSavedTime = savedInstanceState.getLong(B2_InstanceSavedTime_Key);
-//
-//        B1_runningState = savedInstanceState.getString(B1_runningState_Key);
-//        B2_runningState = savedInstanceState.getString(B2_runningState_Key);
-//        update_anyIntTextView(R.id.id_B_teamScore, B_teamScorePoints);
-//        update_anyIntTextView(R.id.id_B_topsCounter, B_topsCounter);
-//        update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
-//        update_anyTimer(R.id.id_B_timeCounter, B_elapsedTime);
-//
-//        B1_Bonus = savedInstanceState.getInt("B1_Bonus");
-//        B1_Top = savedInstanceState.getInt("B1_Top");
-//        B1_topPoints = savedInstanceState.getInt("B1_topPoints");
-//        B1_numberOfTries = savedInstanceState.getInt("B1_numberOfTries");
-//
-//        B2_Bonus = savedInstanceState.getInt("B2_Bonus");
-//        B2_Top = savedInstanceState.getInt("B2_Top");
-//        B2_topPoints = savedInstanceState.getInt("B2_topPoints");
-//        B2_numberOfTries = savedInstanceState.getInt("B2_numberOfTries");
-//
-//
-//        update_anyTimer(R.id.id_B1_timeCounter, B1_elapsedTime);
-//        update_anyIntTextView(R.id.id_B1_numberOfTries, B1_numberOfTries);
-//        update_anyIntTextView(R.id.id_B1_topPoints, B1_topPoints);
-//
-//        update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
-//        update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
-//        update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
-//
-//
-//        if (A1_runningState.equals("running") ) {
-//            A1_setRunningStatus();
-//        }else {
-//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-//            A1_updatedTime=A1_InstanceSavedTime;
-//            A_updatedTime=A1_updatedTime+A2_updatedTime;
-//        }
-//        ;
-//        if (A2_runningState.equals("running") ) {
-//            A2_setRunningStatus();
-//        }else {
-//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-//            A2_updatedTime=A2_InstanceSavedTime;
-//            A_updatedTime=A1_updatedTime+A2_updatedTime;
-//        }
-//        ;
-//
-//        if (A1_Top != 0 || A1_numberOfTries == 5) {
-//            disableButton(id_A1_btnStart);
-//        }
-//        ;
-//        if (A2_Top != 0 || A2_numberOfTries == 5) {
-//            disableButton(id_A2_btnStart);
-//        }
-//        ;
-//        if (A1_topPoints != 0) {
-//            enableView(R.id.id_A1_topPoints);
-//            enableView(R.id.A1_topPointsWrapper);
-//        }
-//        ;
-//        if (A2_topPoints != 0) {
-//            enableView(R.id.id_A2_topPoints);
-//            enableView(R.id.A2_topPointsWrapper);
-//        }
-//        ;
-//
-//        if (B1_runningState.equals("running") ) {
-//            B1_setRunningStatus();
-//        }else {
-//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-//            B1_updatedTime=B1_InstanceSavedTime;
-//            B_updatedTime=B1_updatedTime+B2_updatedTime;
-//        }
-//        ;
-//        if (B2_runningState.equals("running") ) {
-//            B2_setRunningStatus();
-//        }else {
-//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-//            B2_updatedTime=B2_InstanceSavedTime;
-//            B_updatedTime=B1_updatedTime+B2_updatedTime;
-//        }
-//        ;
-//
-//        if (B1_Top != 0 || B1_numberOfTries == 5) {
-//            disableButton(id_B1_btnStart);
-//        }
-//        ;
-//        if (B2_Top != 0 || B2_numberOfTries == 5) {
-//            disableButton(id_B2_btnStart);
-//        }
-//        ;
-//        if (B1_topPoints != 0) {
-//            enableView(R.id.id_B1_topPoints);
-//            enableView(R.id.B1_topPointsWrapper);
-//        }
-//        ;
-//        if (B2_topPoints != 0) {
-//            enableView(R.id.id_B2_topPoints);
-//            enableView(R.id.B2_topPointsWrapper);
-//        }
-//        ;
-//
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+        super.onRestoreInstanceState(savedInstanceState);
+
+        A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
+        A_topsCounter = savedInstanceState.getInt("A_topsCounter");
+        A_bonusCounter = savedInstanceState.getInt("A_bonusCounter");
+        A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
+
+        A1_elapsedTime =savedInstanceState.getString("A1_elapsedTime");
+        A1_InstanceSavedTime = savedInstanceState.getLong(A1_InstanceSavedTime_Key);
+        A1_runningState = savedInstanceState.getString(A1_runningState_Key);
+        A1_Bonus = savedInstanceState.getInt("A1_Bonus");
+        A1_Top = savedInstanceState.getInt("A1_Top");
+        A1_topPoints = savedInstanceState.getInt("A1_topPoints");
+        A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
+
+        A2_elapsedTime =savedInstanceState.getString("A2_elapsedTime");
+        A2_InstanceSavedTime = savedInstanceState.getLong(A2_InstanceSavedTime_Key);
+        A2_runningState = savedInstanceState.getString(A2_runningState_Key);
+        A2_Bonus = savedInstanceState.getInt("A2_Bonus");
+        A2_Top = savedInstanceState.getInt("A2_Top");
+        A2_topPoints = savedInstanceState.getInt("A2_topPoints");
+        A2_numberOfTries = savedInstanceState.getInt("A2_numberOfTries");
+
+        update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
+        update_anyIntTextView(R.id.id_A_topsCounter, A_topsCounter);
+        update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
+        update_anyTimer(R.id.id_A_timeCounter, A_elapsedTime);
+
+        update_anyTimer(R.id.id_A1_timeCounter, A1_elapsedTime);
+        update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
+        update_anyIntTextView(R.id.id_A1_topPoints, A1_topPoints);
+
+        update_anyTimer(R.id.id_A2_timeCounter, A2_elapsedTime);
+        update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
+        update_anyIntTextView(R.id.id_A2_topPoints, A2_topPoints);
+
+        B_teamScorePoints = savedInstanceState.getInt("B_teamScorePoints");
+        B_topsCounter = savedInstanceState.getInt("B_topsCounter");
+        B_bonusCounter = savedInstanceState.getInt("B_bonusCounter");
+        B_elapsedTime = savedInstanceState.getString("B_elapsedTime");
+
+        B1_elapsedTime =savedInstanceState.getString("B1_elapsedTime");
+        B1_InstanceSavedTime = savedInstanceState.getLong(B1_InstanceSavedTime_Key);
+        B1_runningState = savedInstanceState.getString(B1_runningState_Key);
+        B1_Bonus = savedInstanceState.getInt("B1_Bonus");
+        B1_Top = savedInstanceState.getInt("B1_Top");
+        B1_topPoints = savedInstanceState.getInt("B1_topPoints");
+        B1_numberOfTries = savedInstanceState.getInt("B1_numberOfTries");
+
+        B2_runningState = savedInstanceState.getString(B2_runningState_Key);
+        B2_elapsedTime =savedInstanceState.getString("B2_elapsedTime");
+        B2_InstanceSavedTime = savedInstanceState.getLong(B2_InstanceSavedTime_Key);
+        B2_Bonus = savedInstanceState.getInt("B2_Bonus");
+        B2_Top = savedInstanceState.getInt("B2_Top");
+        B2_topPoints = savedInstanceState.getInt("B2_topPoints");
+        B2_numberOfTries = savedInstanceState.getInt("B2_numberOfTries");
+
+        update_anyIntTextView(R.id.id_B_teamScore, B_teamScorePoints);
+        update_anyIntTextView(R.id.id_B_topsCounter, B_topsCounter);
+        update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
+        update_anyTimer(R.id.id_B_timeCounter, B_elapsedTime);
+
+        update_anyTimer(R.id.id_B1_timeCounter, B1_elapsedTime);
+        update_anyIntTextView(R.id.id_B1_numberOfTries, B1_numberOfTries);
+        update_anyIntTextView(R.id.id_B1_topPoints, B1_topPoints);
+
+        update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
+        update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
+        update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
+
+            if (A1_runningState.equals("running") ) {
+            A1_setRunningStatus();
+        }else {
+            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+            A1_updatedTime=A1_InstanceSavedTime;
+            A_updatedTime=A1_updatedTime+A2_updatedTime;
+        }
+        ;
+            if (A2_runningState.equals("running") ) {
+            A2_setRunningStatus();
+        }else {
+            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+            A2_updatedTime=A2_InstanceSavedTime;
+            A_updatedTime=A1_updatedTime+A2_updatedTime;
+        }
+        ;
+
+            if (A1_Top != 0 || A1_numberOfTries == 5) {
+            disableButton(id_A1_btnStart);
+        }
+        ;
+            if (A2_Top != 0 || A2_numberOfTries == 5) {
+            disableButton(id_A2_btnStart);
+        }
+        ;
+            if (A1_topPoints != 0) {
+            enableView(R.id.id_A1_topPoints);
+            enableView(R.id.A1_topPointsWrapper);
+        }
+        ;
+            if (A2_topPoints != 0) {
+            enableView(R.id.id_A2_topPoints);
+            enableView(R.id.A2_topPointsWrapper);
+        }
+        ;
+            if (B1_runningState.equals("running") ) {
+            B1_setRunningStatus();
+        }else {
+            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+            B1_updatedTime=B1_InstanceSavedTime;
+            B_updatedTime=B1_updatedTime+B2_updatedTime;
+        }
+        ;
+            if (B2_runningState.equals("running") ) {
+            B2_setRunningStatus();
+        }else {
+            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+            B2_updatedTime=B2_InstanceSavedTime;
+            B_updatedTime=B1_updatedTime+B2_updatedTime;
+        }
+        ;
+            if (B1_Top != 0 || B1_numberOfTries == 5) {
+            disableButton(id_B1_btnStart);
+        }
+        ;
+            if (B2_Top != 0 || B2_numberOfTries == 5) {
+            disableButton(id_B2_btnStart);
+        }
+        ;
+            if (B1_topPoints != 0) {
+            enableView(R.id.id_B1_topPoints);
+            enableView(R.id.B1_topPointsWrapper);
+        }
+        ;
+            if (B2_topPoints != 0) {
+            enableView(R.id.id_B2_topPoints);
+            enableView(R.id.B2_topPointsWrapper);
+        }
+    ;
 //        // Restore UI state from the savedInstanceState.
 //        // This bundle has also been passed to onCreate.
-//    }
-
-    //Retrieve variable values  after coming from background
-
-
-//    public void onResume(Bundle savedInstanceState) {
-//
-//        super.onResume(savedInstanceState);
-//
-//        A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
-//        A_topsCounter = savedInstanceState.getInt("A_topsCounter");
-//        A_bonusCounter = savedInstanceState.getInt("A_bonusCounter");
-//        A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
-//
-//        A1_elapsedTime =savedInstanceState.getString("A1_elapsedTime");
-//        A1_InstanceSavedTime = savedInstanceState.getLong(A1_InstanceSavedTime_Key);
-//        A2_elapsedTime =savedInstanceState.getString("A2_elapsedTime");
-//        A2_InstanceSavedTime = savedInstanceState.getLong(A2_InstanceSavedTime_Key);
-//
-//        A1_runningState = savedInstanceState.getString(A1_runningState_Key);
-//        A2_runningState = savedInstanceState.getString(A2_runningState_Key);
-//        update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
-//        update_anyIntTextView(R.id.id_A_topsCounter, A_topsCounter);
-//        update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
-//        update_anyTimer(R.id.id_A_timeCounter, A_elapsedTime);
-//
-//        A1_Bonus = savedInstanceState.getInt("A1_Bonus");
-//        A1_Top = savedInstanceState.getInt("A1_Top");
-//        A1_topPoints = savedInstanceState.getInt("A1_topPoints");
-//        A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
-//
-//        A2_Bonus = savedInstanceState.getInt("A2_Bonus");
-//        A2_Top = savedInstanceState.getInt("A2_Top");
-//        A2_topPoints = savedInstanceState.getInt("A2_topPoints");
-//        A2_numberOfTries = savedInstanceState.getInt("A2_numberOfTries");
-//
-//
-//        update_anyTimer(R.id.id_A1_timeCounter, A1_elapsedTime);
-//        update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
-//        update_anyIntTextView(R.id.id_A1_topPoints, A1_topPoints);
-//
-//        update_anyTimer(R.id.id_A2_timeCounter, A2_elapsedTime);
-//        update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
-//        update_anyIntTextView(R.id.id_A2_topPoints, A2_topPoints);
-//
-//        B_teamScorePoints = savedInstanceState.getInt("B_teamScorePoints");
-//        B_topsCounter = savedInstanceState.getInt("B_topsCounter");
-//        B_bonusCounter = savedInstanceState.getInt("B_bonusCounter");
-//        B_elapsedTime = savedInstanceState.getString("B_elapsedTime");
-//
-//        B1_elapsedTime =savedInstanceState.getString("B1_elapsedTime");
-//        B1_InstanceSavedTime = savedInstanceState.getLong(B1_InstanceSavedTime_Key);
-//        B2_elapsedTime =savedInstanceState.getString("B2_elapsedTime");
-//        B2_InstanceSavedTime = savedInstanceState.getLong(B2_InstanceSavedTime_Key);
-//
-//        B1_runningState = savedInstanceState.getString(B1_runningState_Key);
-//        B2_runningState = savedInstanceState.getString(B2_runningState_Key);
-//        update_anyIntTextView(R.id.id_B_teamScore, B_teamScorePoints);
-//        update_anyIntTextView(R.id.id_B_topsCounter, B_topsCounter);
-//        update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
-//        update_anyTimer(R.id.id_B_timeCounter, B_elapsedTime);
-//
-//        B1_Bonus = savedInstanceState.getInt("B1_Bonus");
-//        B1_Top = savedInstanceState.getInt("B1_Top");
-//        B1_topPoints = savedInstanceState.getInt("B1_topPoints");
-//        B1_numberOfTries = savedInstanceState.getInt("B1_numberOfTries");
-//
-//        B2_Bonus = savedInstanceState.getInt("B2_Bonus");
-//        B2_Top = savedInstanceState.getInt("B2_Top");
-//        B2_topPoints = savedInstanceState.getInt("B2_topPoints");
-//        B2_numberOfTries = savedInstanceState.getInt("B2_numberOfTries");
-//
-//
-//        update_anyTimer(R.id.id_B1_timeCounter, B1_elapsedTime);
-//        update_anyIntTextView(R.id.id_B1_numberOfTries, B1_numberOfTries);
-//        update_anyIntTextView(R.id.id_B1_topPoints, B1_topPoints);
-//
-//        update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
-//        update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
-//        update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
-//
-//
-//        if (A1_runningState.equals("running") ) {
-//            A1_setRunningStatus();
-//        }else {
-//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-//            A1_updatedTime=A1_InstanceSavedTime;
-//            A_updatedTime=A1_updatedTime+A2_updatedTime;
-//        }
-//        ;
-//        if (A2_runningState.equals("running") ) {
-//            A2_setRunningStatus();
-//        }else {
-//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-//            A2_updatedTime=A2_InstanceSavedTime;
-//            A_updatedTime=A1_updatedTime+A2_updatedTime;
-//        }
-//        ;
-//
-//        if (A1_Top != 0 || A1_numberOfTries == 5) {
-//            disableButton(id_A1_btnStart);
-//        }
-//        ;
-//        if (A2_Top != 0 || A2_numberOfTries == 5) {
-//            disableButton(id_A2_btnStart);
-//        }
-//        ;
-//        if (A1_topPoints != 0) {
-//            enableView(R.id.id_A1_topPoints);
-//            enableView(R.id.A1_topPointsWrapper);
-//        }
-//        ;
-//        if (A2_topPoints != 0) {
-//            enableView(R.id.id_A2_topPoints);
-//            enableView(R.id.A2_topPointsWrapper);
-//        }
-//        ;
-//
-//        if (B1_runningState.equals("running") ) {
-//            B1_setRunningStatus();
-//        }else {
-//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-//            B1_updatedTime=B1_InstanceSavedTime;
-//            B_updatedTime=B1_updatedTime+B2_updatedTime;
-//        }
-//        ;
-//        if (B2_runningState.equals("running") ) {
-//            B2_setRunningStatus();
-//        }else {
-//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-//            B2_updatedTime=B2_InstanceSavedTime;
-//            B_updatedTime=B1_updatedTime+B2_updatedTime;
-//        }
-//        ;
-//
-//        if (B1_Top != 0 || B1_numberOfTries == 5) {
-//            disableButton(id_B1_btnStart);
-//        }
-//        ;
-//        if (B2_Top != 0 || B2_numberOfTries == 5) {
-//            disableButton(id_B2_btnStart);
-//        }
-//        ;
-//        if (B1_topPoints != 0) {
-//            enableView(R.id.id_B1_topPoints);
-//            enableView(R.id.B1_topPointsWrapper);
-//        }
-//        ;
-//        if (B2_topPoints != 0) {
-//            enableView(R.id.id_B2_topPoints);
-//            enableView(R.id.B2_topPointsWrapper);
-//        }
-//        ;
-//
-//        // Restore UI state from the savedInstanceState.
-//        // This bundle has also been passed to onCreate.
-//    }
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        reset();
+//        buttonInit();
+    }
+
+    @Override
+    //Not doing anything - it is here in the case I need to test saving and retrieving instanceSets
+    protected void onResume() {
+        super.onResume();
+
+//        A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
+//        A_topsCounter = savedInstanceState.getInt("A_topsCounter");
+//        A_bonusCounter = savedInstanceState.getInt("A_bonusCounter");
+//        A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
+//
+//        A1_elapsedTime =savedInstanceState.getString("A1_elapsedTime");
+//        A1_InstanceSavedTime = savedInstanceState.getLong(A1_InstanceSavedTime_Key);
+//        A1_runningState = savedInstanceState.getString(A1_runningState_Key);
+//        A1_Bonus = savedInstanceState.getInt("A1_Bonus");
+//        A1_Top = savedInstanceState.getInt("A1_Top");
+//        A1_topPoints = savedInstanceState.getInt("A1_topPoints");
+//        A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
+//
+//
+//        A2_elapsedTime =savedInstanceState.getString("A2_elapsedTime");
+//        A2_InstanceSavedTime = savedInstanceState.getLong(A2_InstanceSavedTime_Key);
+//        A2_runningState = savedInstanceState.getString(A2_runningState_Key);
+//        A2_Bonus = savedInstanceState.getInt("A2_Bonus");
+//        A2_Top = savedInstanceState.getInt("A2_Top");
+//        A2_topPoints = savedInstanceState.getInt("A2_topPoints");
+//        A2_numberOfTries = savedInstanceState.getInt("A2_numberOfTries");
+//
+//        update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
+//        update_anyIntTextView(R.id.id_A_topsCounter, A_topsCounter);
+//        update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
+//        update_anyTimer(R.id.id_A_timeCounter, A_elapsedTime);
+//
+//        update_anyTimer(R.id.id_A1_timeCounter, A1_elapsedTime);
+//        update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
+//        update_anyIntTextView(R.id.id_A1_topPoints, A1_topPoints);
+//
+//        update_anyTimer(R.id.id_A2_timeCounter, A2_elapsedTime);
+//        update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
+//        update_anyIntTextView(R.id.id_A2_topPoints, A2_topPoints);
+//
+//        B_teamScorePoints = savedInstanceState.getInt("B_teamScorePoints");
+//        B_topsCounter = savedInstanceState.getInt("B_topsCounter");
+//        B_bonusCounter = savedInstanceState.getInt("B_bonusCounter");
+//        B_elapsedTime = savedInstanceState.getString("B_elapsedTime");
+//
+//        B1_elapsedTime =savedInstanceState.getString("B1_elapsedTime");
+//        B1_InstanceSavedTime = savedInstanceState.getLong(B1_InstanceSavedTime_Key);
+//        B1_runningState = savedInstanceState.getString(B1_runningState_Key);
+//        B1_Bonus = savedInstanceState.getInt("B1_Bonus");
+//        B1_Top = savedInstanceState.getInt("B1_Top");
+//        B1_topPoints = savedInstanceState.getInt("B1_topPoints");
+//        B1_numberOfTries = savedInstanceState.getInt("B1_numberOfTries");
+//
+//        B2_runningState = savedInstanceState.getString(B2_runningState_Key);
+//        B2_elapsedTime =savedInstanceState.getString("B2_elapsedTime");
+//        B2_InstanceSavedTime = savedInstanceState.getLong(B2_InstanceSavedTime_Key);
+//        B2_Bonus = savedInstanceState.getInt("B2_Bonus");
+//        B2_Top = savedInstanceState.getInt("B2_Top");
+//        B2_topPoints = savedInstanceState.getInt("B2_topPoints");
+//        B2_numberOfTries = savedInstanceState.getInt("B2_numberOfTries");
+//
+//        update_anyIntTextView(R.id.id_B_teamScore, B_teamScorePoints);
+//        update_anyIntTextView(R.id.id_B_topsCounter, B_topsCounter);
+//        update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
+//        update_anyTimer(R.id.id_B_timeCounter, B_elapsedTime);
+//
+//        update_anyTimer(R.id.id_B1_timeCounter, B1_elapsedTime);
+//        update_anyIntTextView(R.id.id_B1_numberOfTries, B1_numberOfTries);
+//        update_anyIntTextView(R.id.id_B1_topPoints, B1_topPoints);
+//
+//        update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
+//        update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
+//        update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
+//
+//        if (A1_runningState.equals("running") ) {
+//            A1_setRunningStatus();
+//        }else {
+//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+//            A1_updatedTime=A1_InstanceSavedTime;
+//            A_updatedTime=A1_updatedTime+A2_updatedTime;
+//        }
+//        ;
+//        if (A2_runningState.equals("running") ) {
+//            A2_setRunningStatus();
+//        }else {
+//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+//            A2_updatedTime=A2_InstanceSavedTime;
+//            A_updatedTime=A1_updatedTime+A2_updatedTime;
+//        }
+//        ;
+//
+//        if (A1_Top != 0 || A1_numberOfTries == 5) {
+//            disableButton(id_A1_btnStart);
+//        }
+//        ;
+//        if (A2_Top != 0 || A2_numberOfTries == 5) {
+//            disableButton(id_A2_btnStart);
+//        }
+//        ;
+//        if (A1_topPoints != 0) {
+//            enableView(R.id.id_A1_topPoints);
+//            enableView(R.id.A1_topPointsWrapper);
+//        }
+//        ;
+//        if (A2_topPoints != 0) {
+//            enableView(R.id.id_A2_topPoints);
+//            enableView(R.id.A2_topPointsWrapper);
+//        }
+//        ;
+//
+//        if (B1_runningState.equals("running") ) {
+//            B1_setRunningStatus();
+//        }else {
+//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+//            B1_updatedTime=B1_InstanceSavedTime;
+//            B_updatedTime=B1_updatedTime+B2_updatedTime;
+//        }
+//        ;
+//        if (B2_runningState.equals("running") ) {
+//            B2_setRunningStatus();
+//        }else {
+//            // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+//            B2_updatedTime=B2_InstanceSavedTime;
+//            B_updatedTime=B1_updatedTime+B2_updatedTime;
+//        }
+//        ;
+//
+//        if (B1_Top != 0 || B1_numberOfTries == 5) {
+//            disableButton(id_B1_btnStart);
+//        }
+//        ;
+//        if (B2_Top != 0 || B2_numberOfTries == 5) {
+//            disableButton(id_B2_btnStart);
+//        }
+//        ;
+//        if (B1_topPoints != 0) {
+//            enableView(R.id.id_B1_topPoints);
+//            enableView(R.id.B1_topPointsWrapper);
+//        }
+//        ;
+//        if (B2_topPoints != 0) {
+//            enableView(R.id.id_B2_topPoints);
+//            enableView(R.id.B2_topPointsWrapper);
+//        }
+//        ;
     }
 
     @Override
@@ -578,146 +560,146 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             // Restore value of members from saved state
 
-            A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
-            A_topsCounter = savedInstanceState.getInt("A_topsCounter");
-            A_bonusCounter = savedInstanceState.getInt("A_bonusCounter");
-            A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
-
-            A1_elapsedTime =savedInstanceState.getString("A1_elapsedTime");
-            A1_InstanceSavedTime = savedInstanceState.getLong(A1_InstanceSavedTime_Key);
-            A1_runningState = savedInstanceState.getString(A1_runningState_Key);
-            A1_Bonus = savedInstanceState.getInt("A1_Bonus");
-            A1_Top = savedInstanceState.getInt("A1_Top");
-            A1_topPoints = savedInstanceState.getInt("A1_topPoints");
-            A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
-
-
-            A2_elapsedTime =savedInstanceState.getString("A2_elapsedTime");
-            A2_InstanceSavedTime = savedInstanceState.getLong(A2_InstanceSavedTime_Key);
-            A2_runningState = savedInstanceState.getString(A2_runningState_Key);
-            A2_Bonus = savedInstanceState.getInt("A2_Bonus");
-            A2_Top = savedInstanceState.getInt("A2_Top");
-            A2_topPoints = savedInstanceState.getInt("A2_topPoints");
-            A2_numberOfTries = savedInstanceState.getInt("A2_numberOfTries");
-
-            update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
-            update_anyIntTextView(R.id.id_A_topsCounter, A_topsCounter);
-            update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
-            update_anyTimer(R.id.id_A_timeCounter, A_elapsedTime);
-
-            update_anyTimer(R.id.id_A1_timeCounter, A1_elapsedTime);
-            update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
-            update_anyIntTextView(R.id.id_A1_topPoints, A1_topPoints);
-
-            update_anyTimer(R.id.id_A2_timeCounter, A2_elapsedTime);
-            update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
-            update_anyIntTextView(R.id.id_A2_topPoints, A2_topPoints);
-
-            B_teamScorePoints = savedInstanceState.getInt("B_teamScorePoints");
-            B_topsCounter = savedInstanceState.getInt("B_topsCounter");
-            B_bonusCounter = savedInstanceState.getInt("B_bonusCounter");
-            B_elapsedTime = savedInstanceState.getString("B_elapsedTime");
-
-            B1_elapsedTime =savedInstanceState.getString("B1_elapsedTime");
-            B1_InstanceSavedTime = savedInstanceState.getLong(B1_InstanceSavedTime_Key);
-            B1_runningState = savedInstanceState.getString(B1_runningState_Key);
-            B1_Bonus = savedInstanceState.getInt("B1_Bonus");
-            B1_Top = savedInstanceState.getInt("B1_Top");
-            B1_topPoints = savedInstanceState.getInt("B1_topPoints");
-            B1_numberOfTries = savedInstanceState.getInt("B1_numberOfTries");
-
-            B2_runningState = savedInstanceState.getString(B2_runningState_Key);
-            B2_elapsedTime =savedInstanceState.getString("B2_elapsedTime");
-            B2_InstanceSavedTime = savedInstanceState.getLong(B2_InstanceSavedTime_Key);
-            B2_Bonus = savedInstanceState.getInt("B2_Bonus");
-            B2_Top = savedInstanceState.getInt("B2_Top");
-            B2_topPoints = savedInstanceState.getInt("B2_topPoints");
-            B2_numberOfTries = savedInstanceState.getInt("B2_numberOfTries");
-
-            update_anyIntTextView(R.id.id_B_teamScore, B_teamScorePoints);
-            update_anyIntTextView(R.id.id_B_topsCounter, B_topsCounter);
-            update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
-            update_anyTimer(R.id.id_B_timeCounter, B_elapsedTime);
-
-            update_anyTimer(R.id.id_B1_timeCounter, B1_elapsedTime);
-            update_anyIntTextView(R.id.id_B1_numberOfTries, B1_numberOfTries);
-            update_anyIntTextView(R.id.id_B1_topPoints, B1_topPoints);
-
-            update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
-            update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
-            update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
-
-            if (A1_runningState.equals("running") ) {
-                A1_setRunningStatus();
-            }else {
-                // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-                A1_updatedTime=A1_InstanceSavedTime;
-                A_updatedTime=A1_updatedTime+A2_updatedTime;
-            }
-            ;
-            if (A2_runningState.equals("running") ) {
-                A2_setRunningStatus();
-            }else {
-                // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-                A2_updatedTime=A2_InstanceSavedTime;
-                A_updatedTime=A1_updatedTime+A2_updatedTime;
-            }
-            ;
-
-            if (A1_Top != 0 || A1_numberOfTries == 5) {
-                disableButton(id_A1_btnStart);
-            }
-            ;
-            if (A2_Top != 0 || A2_numberOfTries == 5) {
-                disableButton(id_A2_btnStart);
-            }
-            ;
-            if (A1_topPoints != 0) {
-                enableView(R.id.id_A1_topPoints);
-                enableView(R.id.A1_topPointsWrapper);
-            }
-            ;
-            if (A2_topPoints != 0) {
-                enableView(R.id.id_A2_topPoints);
-                enableView(R.id.A2_topPointsWrapper);
-            }
-            ;
-
-            if (B1_runningState.equals("running") ) {
-                B1_setRunningStatus();
-            }else {
-                // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-                B1_updatedTime=B1_InstanceSavedTime;
-                B_updatedTime=B1_updatedTime+B2_updatedTime;
-            }
-            ;
-            if (B2_runningState.equals("running") ) {
-                B2_setRunningStatus();
-            }else {
-                // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
-                B2_updatedTime=B2_InstanceSavedTime;
-                B_updatedTime=B1_updatedTime+B2_updatedTime;
-            }
-            ;
-
-            if (B1_Top != 0 || B1_numberOfTries == 5) {
-                disableButton(id_B1_btnStart);
-            }
-            ;
-            if (B2_Top != 0 || B2_numberOfTries == 5) {
-                disableButton(id_B2_btnStart);
-            }
-            ;
-            if (B1_topPoints != 0) {
-                enableView(R.id.id_B1_topPoints);
-                enableView(R.id.B1_topPointsWrapper);
-            }
-            ;
-            if (B2_topPoints != 0) {
-                enableView(R.id.id_B2_topPoints);
-                enableView(R.id.B2_topPointsWrapper);
-            }
-            ;
+//            A_teamScorePoints = savedInstanceState.getInt("A_teamScorePoints");
+//            A_topsCounter = savedInstanceState.getInt("A_topsCounter");
+//            A_bonusCounter = savedInstanceState.getInt("A_bonusCounter");
+//            A_elapsedTime = savedInstanceState.getString("A_elapsedTime");
+//
+//            A1_elapsedTime =savedInstanceState.getString("A1_elapsedTime");
+//            A1_InstanceSavedTime = savedInstanceState.getLong(A1_InstanceSavedTime_Key);
+//            A1_runningState = savedInstanceState.getString(A1_runningState_Key);
+//            A1_Bonus = savedInstanceState.getInt("A1_Bonus");
+//            A1_Top = savedInstanceState.getInt("A1_Top");
+//            A1_topPoints = savedInstanceState.getInt("A1_topPoints");
+//            A1_numberOfTries = savedInstanceState.getInt("A1_numberOfTries");
+//
+//
+//            A2_elapsedTime =savedInstanceState.getString("A2_elapsedTime");
+//            A2_InstanceSavedTime = savedInstanceState.getLong(A2_InstanceSavedTime_Key);
+//            A2_runningState = savedInstanceState.getString(A2_runningState_Key);
+//            A2_Bonus = savedInstanceState.getInt("A2_Bonus");
+//            A2_Top = savedInstanceState.getInt("A2_Top");
+//            A2_topPoints = savedInstanceState.getInt("A2_topPoints");
+//            A2_numberOfTries = savedInstanceState.getInt("A2_numberOfTries");
+//
+//            update_anyIntTextView(R.id.id_A_teamScore, A_teamScorePoints);
+//            update_anyIntTextView(R.id.id_A_topsCounter, A_topsCounter);
+//            update_anyIntTextView(R.id.id_A_bonusCounter, A_bonusCounter);
+//            update_anyTimer(R.id.id_A_timeCounter, A_elapsedTime);
+//
+//            update_anyTimer(R.id.id_A1_timeCounter, A1_elapsedTime);
+//            update_anyIntTextView(R.id.id_A1_numberOfTries, A1_numberOfTries);
+//            update_anyIntTextView(R.id.id_A1_topPoints, A1_topPoints);
+//
+//            update_anyTimer(R.id.id_A2_timeCounter, A2_elapsedTime);
+//            update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
+//            update_anyIntTextView(R.id.id_A2_topPoints, A2_topPoints);
+//
+//            B_teamScorePoints = savedInstanceState.getInt("B_teamScorePoints");
+//            B_topsCounter = savedInstanceState.getInt("B_topsCounter");
+//            B_bonusCounter = savedInstanceState.getInt("B_bonusCounter");
+//            B_elapsedTime = savedInstanceState.getString("B_elapsedTime");
+//
+//            B1_elapsedTime =savedInstanceState.getString("B1_elapsedTime");
+//            B1_InstanceSavedTime = savedInstanceState.getLong(B1_InstanceSavedTime_Key);
+//            B1_runningState = savedInstanceState.getString(B1_runningState_Key);
+//            B1_Bonus = savedInstanceState.getInt("B1_Bonus");
+//            B1_Top = savedInstanceState.getInt("B1_Top");
+//            B1_topPoints = savedInstanceState.getInt("B1_topPoints");
+//            B1_numberOfTries = savedInstanceState.getInt("B1_numberOfTries");
+//
+//            B2_runningState = savedInstanceState.getString(B2_runningState_Key);
+//            B2_elapsedTime =savedInstanceState.getString("B2_elapsedTime");
+//            B2_InstanceSavedTime = savedInstanceState.getLong(B2_InstanceSavedTime_Key);
+//            B2_Bonus = savedInstanceState.getInt("B2_Bonus");
+//            B2_Top = savedInstanceState.getInt("B2_Top");
+//            B2_topPoints = savedInstanceState.getInt("B2_topPoints");
+//            B2_numberOfTries = savedInstanceState.getInt("B2_numberOfTries");
+//
+//            update_anyIntTextView(R.id.id_B_teamScore, B_teamScorePoints);
+//            update_anyIntTextView(R.id.id_B_topsCounter, B_topsCounter);
+//            update_anyIntTextView(R.id.id_B_bonusCounter, B_bonusCounter);
+//            update_anyTimer(R.id.id_B_timeCounter, B_elapsedTime);
+//
+//            update_anyTimer(R.id.id_B1_timeCounter, B1_elapsedTime);
+//            update_anyIntTextView(R.id.id_B1_numberOfTries, B1_numberOfTries);
+//            update_anyIntTextView(R.id.id_B1_topPoints, B1_topPoints);
+//
+//            update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
+//            update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
+//            update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
+//
+//            if (A1_runningState.equals("running") ) {
+//                A1_setRunningStatus();
+//            }else {
+//                // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+//                A1_updatedTime=A1_InstanceSavedTime;
+//                A_updatedTime=A1_updatedTime+A2_updatedTime;
+//            }
+//            ;
+//            if (A2_runningState.equals("running") ) {
+//                A2_setRunningStatus();
+//            }else {
+//                // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+//                A2_updatedTime=A2_InstanceSavedTime;
+//                A_updatedTime=A1_updatedTime+A2_updatedTime;
+//            }
+//            ;
+//
+//            if (A1_Top != 0 || A1_numberOfTries == 5) {
+//                disableButton(id_A1_btnStart);
+//            }
+//            ;
+//            if (A2_Top != 0 || A2_numberOfTries == 5) {
+//                disableButton(id_A2_btnStart);
+//            }
+//            ;
+//            if (A1_topPoints != 0) {
+//                enableView(R.id.id_A1_topPoints);
+//                enableView(R.id.A1_topPointsWrapper);
+//            }
+//            ;
+//            if (A2_topPoints != 0) {
+//                enableView(R.id.id_A2_topPoints);
+//                enableView(R.id.A2_topPointsWrapper);
+//            }
+//            ;
+//
+//            if (B1_runningState.equals("running") ) {
+//                B1_setRunningStatus();
+//            }else {
+//                // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+//                B1_updatedTime=B1_InstanceSavedTime;
+//                B_updatedTime=B1_updatedTime+B2_updatedTime;
+//            }
+//            ;
+//            if (B2_runningState.equals("running") ) {
+//                B2_setRunningStatus();
+//            }else {
+//                // if doesn't run again, time variables would be lost (counters would be reset in the second turn of screen). Thus,this else part
+//                B2_updatedTime=B2_InstanceSavedTime;
+//                B_updatedTime=B1_updatedTime+B2_updatedTime;
+//            }
+//            ;
+//
+//            if (B1_Top != 0 || B1_numberOfTries == 5) {
+//                disableButton(id_B1_btnStart);
+//            }
+//            ;
+//            if (B2_Top != 0 || B2_numberOfTries == 5) {
+//                disableButton(id_B2_btnStart);
+//            }
+//            ;
+//            if (B1_topPoints != 0) {
+//                enableView(R.id.id_B1_topPoints);
+//                enableView(R.id.B1_topPointsWrapper);
+//            }
+//            ;
+//            if (B2_topPoints != 0) {
+//                enableView(R.id.id_B2_topPoints);
+//                enableView(R.id.B2_topPointsWrapper);
+//            }
+//            ;
 
         } else {
                 //nothing here, for now
@@ -969,7 +951,6 @@ public class MainActivity extends AppCompatActivity {
                                        }
         );
 
-
 //   B1_Top Button  -  pauses counter and increases topCounter
         B1topButton = (Button) findViewById(R.id.id_B1_btnTop);
         B1topButton.setOnClickListener(new View.OnClickListener() {
@@ -1219,25 +1200,6 @@ public class MainActivity extends AppCompatActivity {
         update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
         update_anyTimer(R.id.id_A2_timeCounter, A2_elapsedTime);
 
-        //  A1_reset button states
-        disableButton(R.id.id_A1_btnQuit);
-        disableButton(R.id.id_A1_btnBonus);
-        disableButton(R.id.id_A1_btnTop);
-        enableButton(id_A1_btnStart);
-        disableView(R.id.id_A1_topPoints);
-        disableView(R.id.A1_topPointsWrapper);
-
-
-        //  A2_reset button states
-        disableButton(R.id.id_A2_btnQuit);
-        disableButton(R.id.id_A2_btnBonus);
-        disableButton(R.id.id_A2_btnTop);
-        enableButton(id_A2_btnStart);
-        disableView(R.id.id_A2_topPoints);
-        disableView(R.id.A2_topPointsWrapper);
-
-        enableButton(id_A3_btnStart); //NOTE: For now, Button3 is there just for demo, so, no need to check TODO set 12 routes
-
         //  B_reset variables and apply
         B_teamScorePoints = 0;
         B_topsCounter = 0;
@@ -1280,6 +1242,29 @@ public class MainActivity extends AppCompatActivity {
         update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
         update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
 
+        buttonInit();
+}
+
+//  Initialise Buttons
+    public void buttonInit() {
+        //  A1_reset button states
+        disableButton(R.id.id_A1_btnQuit);
+        disableButton(R.id.id_A1_btnBonus);
+        disableButton(R.id.id_A1_btnTop);
+        enableButton(id_A1_btnStart);
+        disableView(R.id.id_A1_topPoints);
+        disableView(R.id.A1_topPointsWrapper);
+
+        //  A2_reset button states
+        disableButton(R.id.id_A2_btnQuit);
+        disableButton(R.id.id_A2_btnBonus);
+        disableButton(R.id.id_A2_btnTop);
+        enableButton(id_A2_btnStart);
+        disableView(R.id.id_A2_topPoints);
+        disableView(R.id.A2_topPointsWrapper);
+
+        enableButton(id_A3_btnStart); //NOTE: For now, Button3 is there just for demo, so, no need to check TODO set 12 routes
+
         //  B1_reset button states
         disableButton(R.id.id_B1_btnQuit);
         disableButton(R.id.id_B1_btnBonus);
@@ -1297,7 +1282,7 @@ public class MainActivity extends AppCompatActivity {
         disableView(R.id.B2_topPointsWrapper);
 
         enableButton(id_B3_btnStart); //NOTE: For now, Button3 is there just for demo, so, no need to check TODO set 12 routes
-}
+    }
 
     //Method to set running status (chronometer and button's status)
     public void A1_setRunningStatus() {
@@ -1364,6 +1349,7 @@ public class MainActivity extends AppCompatActivity {
         disableButton(id_B3_btnStart);
     }
     ;
+
     //TODO understand better arrays and implement in method above for 12 routes
     //Method to set running status (chronometer and button's status)
         //            public  List<Integer> A_quitBtnIDs = new ArrayList<>(),
@@ -1382,7 +1368,6 @@ public class MainActivity extends AppCompatActivity {
         //      calling buttons:            (A_quitBtnIDs.get(i));
 
 //Methods to update textViews and ButtonViews
-
     //Methods to update textViews
     public void update_anyIntTextView(int thisTextViewIid, int updatedScore) {
         TextView scoreView = (TextView) findViewById(thisTextViewIid);

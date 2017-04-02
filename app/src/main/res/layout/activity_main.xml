@@ -179,7 +179,7 @@
 
                             <LinearLayout
                                 android:id="@+id/A1_topPointsWrapper"
-                                style="@style/clbRouteResultsWrapper"
+                                style="@style/routePointsWrapper"
                                 android:gravity="end">
 
                                 <TextView
@@ -279,7 +279,7 @@
 
                             <LinearLayout
                                 android:id="@+id/A2_topPointsWrapper"
-                                style="@style/clbRouteResultsWrapper"
+                                style="@style/routePointsWrapper"
                                 android:gravity="end">
 
                                 <TextView
@@ -568,7 +568,7 @@
 
                             <LinearLayout
                                 android:id="@+id/B1_topPointsWrapper"
-                                style="@style/clbRouteResultsWrapper"
+                                style="@style/routePointsWrapper"
                                 android:gravity="end">
 
                                 <TextView
@@ -670,7 +670,7 @@
 
                             <LinearLayout
                                 android:id="@+id/B2_topPointsWrapper"
-                                style="@style/clbRouteResultsWrapper"
+                                style="@style/routePointsWrapper"
                                 android:gravity="end">
 
                                 <TextView
