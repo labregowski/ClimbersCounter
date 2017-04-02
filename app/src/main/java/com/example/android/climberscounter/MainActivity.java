@@ -259,11 +259,6 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putLong(B1_InstanceSavedTime_Key, B1_InstanceSavedTime);
         savedInstanceState.putLong(B2_InstanceSavedTime_Key, B2_InstanceSavedTime);
 
-
-
-
-
-
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -309,13 +304,6 @@ public class MainActivity extends AppCompatActivity {
         update_anyIntTextView(R.id.id_A2_numberOfTries, A2_numberOfTries);
         update_anyIntTextView(R.id.id_A2_topPoints, A2_topPoints);
 
-
-
-
-
-
-
-
         B_teamScorePoints = savedInstanceState.getInt("B_teamScorePoints");
         B_topsCounter = savedInstanceState.getInt("B_topsCounter");
         B_bonusCounter = savedInstanceState.getInt("B_bonusCounter");
@@ -351,10 +339,6 @@ public class MainActivity extends AppCompatActivity {
         update_anyTimer(R.id.id_B2_timeCounter, B2_elapsedTime);
         update_anyIntTextView(R.id.id_B2_numberOfTries, B2_numberOfTries);
         update_anyIntTextView(R.id.id_B2_topPoints, B2_topPoints);
-
-
-
-
 
 
         if (A1_runningState.equals("running") ) {
@@ -393,8 +377,6 @@ public class MainActivity extends AppCompatActivity {
         }
         ;
 
-
-
         if (B1_runningState.equals("running") ) {
             B1_setRunningStatus();
         }else {
@@ -431,16 +413,19 @@ public class MainActivity extends AppCompatActivity {
         }
         ;
 
-
-
-
         // Restore UI state from the savedInstanceState.
         // This bundle has also been passed to onCreate.
     }
 
+
+
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
+//        R.id.id_B1_btnStart.setBackgroundResource("#000") ;
         reset();
     }
 
@@ -494,8 +479,6 @@ public class MainActivity extends AppCompatActivity {
                 B2quitButton,
                 B2bonusButton,
                 B2topButton;
-
-
 
 
 //  A1_Start Button - just starts counter
@@ -623,11 +606,6 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                         }
         );
-
-
-
-
-
 
 //   A1_Bonus Button - Increases Bonus counter
         A1bonusButton = (Button) findViewById(R.id.id_A1_btnBonus);
@@ -783,7 +761,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+//Stringify anyting
     public String stringifyTime(long time) {
         int hours = (int) (time / 3600000);
         int mins = (int) ((time - hours * 3600000) / 60000);
@@ -928,7 +906,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 //
-//        Deprecated - Came up with the "update_anyIntTextView" method
+//        Update 3 views atthe same time
+// Deprecated - Came up with the "update_anyIntTextView" method
 //        A_Methods to Update scores
 //
 //        public void A_updateValues(int score, int tops, int bonuses) {

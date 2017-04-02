@@ -4,7 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorButtons</item>
     </style>
 
     <!--General Sizes-->
@@ -44,7 +44,7 @@
     <style name="BckgImg" parent="hMatch_vMatch">
         <item name="android:layout_marginBottom">@dimen/NoBottomMargin</item>
         <item name="android:scaleType">centerCrop</item>
-        <item name="android:alpha">0.75</item>
+        <item name="android:alpha">0.50</item>
     </style>
 
     <!--Toolbar Title-->
@@ -100,15 +100,18 @@
     </style>
 
     <!--Stroke under Athlete's ticker-->
-    <style name="strokeAthleteSticker" parent="hMatch_vWrap">
+    <style name="strokeAthleteStickerA" parent="hMatch_vWrap">
         <item name="android:layout_height">2dp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginTop">-7dp</item>
-        <item name="android:background">@color/colorAccent</item>
+        <item name="android:background">@color/colorAccentA</item>
     </style>
+        <style name="strokeAthleteStickerB" parent="strokeAthleteStickerA">
+            <item name="android:background">@color/colorAccentB</item>
+        </style>
 
     <!-- Team Points Counter-->
-    <style name="teamPointsCounter">
+    <style name="teamPointsCounterA">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">9</item>
         <item name="android:layout_height">match_parent</item>
@@ -117,9 +120,12 @@
         <item name="android:textSize">26sp</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:background">@color/almostAccent</item>
+        <item name="android:background">@color/almostAccentA</item>
         <item name="android:textColor">@color/White</item>
     </style>
+        <style name="teamPointsCounterB" parent="teamPointsCounterA">
+            <item name="android:background">@color/almostAccentB</item>
+        </style>
 
     <!--Small Team Counters -->
     <style name="smallWrapper">
@@ -134,24 +140,37 @@
         <item name="android:paddingLeft">3dp</item>
         <item name="android:paddingRight">3dp</item>
         <item name="android:background">@color/opaqueBlack85</item>
+        <item name="android:textColor">@color/White</item>
+
     </style>
     <!--top chronometer Counters -->
     <!--TextViews within Small Counters -->
     <style name="txtViewInSmallWrapper" parent="hWrap_vWrap">
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/opaqueWhite95</item>
+        <item name="android:textSize">14sp</item>
     </style>
+        <style name="txtViewInSmallWrapperB" parent="txtViewInSmallWrapper">
+            <item name="android:textColor">@color/colorAccentB</item>
+        </style>
+
         <!--top chronometer needs smaller font for TODO - adapt this font just to smaller mobiles -->
-        <style name="topChronTxtViewInSmallWrapper" parent="txtViewInSmallWrapper">
+        <style name="topChronTxtViewInSmallWrapperA" parent="txtViewInSmallWrapper">
             <item name="android:textSize">14sp</item>
             <item name="android:textStyle">bold</item>
+            <item name="android:textColor">@color/White</item>
         </style>
-    <!--Right Side TextViews within Small Counters -->
-    <style name="rightSideTxtViewInSmallWrapper" parent="txtViewInSmallWrapper">
-        <item name="android:layout_marginRight">4dp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
+            <style name="topChronTxtViewInSmallWrapperB" parent="txtViewInSmallWrapper">
+                <item name="android:textColor">@color/colorAccentB</item>
+            </style>
+        <!--Right Side TextViews within Small Counters -->
+        <style name="rightSideTxtViewInSmallWrapperA" parent="txtViewInSmallWrapper">
+            <item name="android:textColor">@color/White</item>
+            <item name="android:layout_marginRight">4dp</item>
+            <item name="android:textStyle">bold</item>
+        </style>
+            <style name="rightSideTxtViewInSmallWrapperB" parent="rightSideTxtViewInSmallWrapperA">
 
+            </style>
 
     <!--Route Wrapper-->
     <style name="routeWrapper" parent="hMatch_vWrap">
@@ -161,11 +180,14 @@
 
     </style>
 
-
     <!--Route Points Counter sticker-->
-    <style name="routePointsCounter" parent="topChronTxtViewInSmallWrapper">
+    <style name="routePointsCounterText" parent="topChronTxtViewInSmallWrapperA">
         <item name="android:padding">1dp</item>
         <item name="android:background">@color/opaqueBlack90</item>
+        <item name="android:textColor">@color/opaqueWhite95</item>
+    </style>
+    <style name="routePointsCounterPoints" parent="routePointsCounterText">
+        <item name="android:textColor">@color/White</item>
     </style>
 
     <!--Labels-->
@@ -175,18 +197,21 @@
         <item name="android:textSize">14dp</item>
         <item name="android:padding">1dp</item>
         <item name="android:background">@color/White</item>
-        <item name="android:textColor">@color/roxo</item>
+        <item name="android:textColor">@color/purple</item>
         <item name="android:alpha">0.8</item>
     </style>
 
 
     <!--Climbing Route Title Bar-->
-    <style name="A_clbRouteTitleBar" parent="hMatch_vWrap">
+    <style name="clbRouteTitleBarA" parent="hMatch_vWrap">
         <item name="android:layout_marginTop">1dp</item>
         <item name="android:layout_height">2dp</item>
-        <item name="android:background">@color/colorAccent</item>
+        <item name="android:background">@color/colorAccentA</item>
         <item name="android:alpha">0.7</item>
     </style>
+        <style name="clbRouteTitleBarB" parent="clbRouteTitleBarA">
+            <item name="android:background">@color/colorAccentB</item>
+        </style>
 
     <!--Climbing Route Title Bar-->
     <style name="clbRouteResultsWrapper" parent="hMatch_vWrap">
@@ -195,6 +220,7 @@
         <item name="android:layout_marginRight">4dp</item>
         <item name="android:padding">0dp</item>
     </style>
+
     <!--Climbing Route Try Text-->
     <style name="clbRouteTryText" parent="hWrap_vWrap">
         <item name="android:textAllCaps">true</item>
@@ -214,7 +240,7 @@
 
     <style name="TryLeft" parent="TryCounter">
         <item name="android:textSize">16dp</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/White</item>
         <item name="android:layout_marginRight">0dp</item>
         <item name="android:layout_marginLeft">5dp</item>
     </style>
@@ -226,20 +252,23 @@
     </style>
 
     <!-- Buttons-->
-    <style name="buttonFullWidth" parent="@style/Widget.AppCompat.Button.Colored">
+    <style name="buttonFullWidthA" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-
         <item name="android:layout_marginBottom">8dp</item>
-
         <item name="android:gravity">center</item>
         <item name="android:padding">0dp</item>
     </style>
+        <style name="buttonFullWidthB" parent="buttonFullWidthA">
 
-    <style name="buttonSharedWidth" parent="@style/buttonFullWidth">
+        </style>
+
+    <style name="buttonSharedWidthA" parent="@style/buttonFullWidthA">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">3</item>
-
     </style>
+        <style name="buttonSharedWidthB" parent="@style/buttonSharedWidthA">
+
+        </style>
 
 </resources>
