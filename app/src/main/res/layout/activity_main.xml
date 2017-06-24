@@ -142,6 +142,7 @@
                                 style="@style/hWrap_vWrap"
                                 android:layout_marginBottom="5dp"
                                 android:orientation="vertical">
+
                                 <View style="@style/clbRouteTitleBarA" />
 
                                 <TextView
@@ -179,7 +180,7 @@
 
                             <LinearLayout
                                 android:id="@+id/A1_topPointsWrapper"
-                                style="@style/clbRouteResultsWrapper"
+                                style="@style/routePointsWrapper"
                                 android:gravity="end">
 
                                 <TextView
@@ -279,7 +280,7 @@
 
                             <LinearLayout
                                 android:id="@+id/A2_topPointsWrapper"
-                                style="@style/clbRouteResultsWrapper"
+                                style="@style/routePointsWrapper"
                                 android:gravity="end">
 
                                 <TextView
@@ -349,50 +350,6 @@
                                     android:text="@string/route3" />
                             </LinearLayout>
 
-                            <!--<RelativeLayout style="@style/clbRouteResultsWrapper">-->
-
-                            <!--<LinearLayout style="@style/tryCounterWraper">-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_A3txtTry"-->
-                            <!--style="@style/clbRouteTryText"-->
-                            <!--android:text="@string/tries" />-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_A3_numberOfTries"-->
-                            <!--style="@style/TryLeft"-->
-                            <!--android:text="@string/currentTry" />-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_A3_possibleTries"-->
-                            <!--style="@style/TryRight"-->
-                            <!--android:text="@string/outOfPossibleTries" />-->
-                            <!--</LinearLayout>-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_A3_timeCounter"-->
-                            <!--style="@style/smallWrapper"-->
-                            <!--android:text="@string/defaultTimerVal"-->
-                            <!--android:textColor="@color/White" />-->
-                            <!--</RelativeLayout>-->
-
-                            <!--<LinearLayout-->
-                            <!--android:id="@+id/A3_topPointsWrapper"-->
-                            <!--style="@style/clbRouteResultsWrapper"-->
-                            <!--android:gravity="end">-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_A3_topPoints"-->
-                            <!--style="@style/routePointsCounter"-->
-                            <!--android:text="@string/defaultScoreCounter" />-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_A3_topPointsLbl"-->
-                            <!--style="@style/routePointsCounter"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="@string/points" />-->
-                            <!--</LinearLayout>-->
-
                             <LinearLayout
                                 style="@style/hMatch_vWrap"
                                 android:orientation="vertical">
@@ -408,27 +365,6 @@
                                         android:text="@string/btnStart" />
                                 </LinearLayout>
 
-                                <!--<LinearLayout-->
-                                <!--style="@style/hMatch_vWrap"-->
-                                <!--android:layout_marginBottom="0dp"-->
-                                <!--android:padding="0dp">-->
-
-                                <!--&lt;!&ndash;<Button&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:id="@+id/id_A3_btnQuit"&ndash;&gt;-->
-                                <!--&lt;!&ndash;style="@style/buttonSharedWidth"&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:text="@string/btnQuit" />&ndash;&gt;-->
-
-                                <!--&lt;!&ndash;<Button&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:id="@+id/id_A3_btnBonus"&ndash;&gt;-->
-                                <!--&lt;!&ndash;style="@style/buttonSharedWidth"&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:text="@string/bonus" />&ndash;&gt;-->
-
-                                <!--&lt;!&ndash;<Button&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:id="@+id/id_A3_btnTop"&ndash;&gt;-->
-                                <!--&lt;!&ndash;style="@style/buttonSharedWidth"&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:layout_weight="2"&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:text="@string/top" />&ndash;&gt;-->
-                                <!--</LinearLayout>-->
                             </LinearLayout>
                         </LinearLayout>
 
@@ -466,8 +402,7 @@
 
                         <LinearLayout
                             android:id="@+id/topsBndLbl_B"
-                            style="@style/smallWrapper"
-                          >
+                            style="@style/smallWrapper">
 
 
                             <TextView
@@ -568,7 +503,7 @@
 
                             <LinearLayout
                                 android:id="@+id/B1_topPointsWrapper"
-                                style="@style/clbRouteResultsWrapper"
+                                style="@style/routePointsWrapper"
                                 android:gravity="end">
 
                                 <TextView
@@ -670,7 +605,7 @@
 
                             <LinearLayout
                                 android:id="@+id/B2_topPointsWrapper"
-                                style="@style/clbRouteResultsWrapper"
+                                style="@style/routePointsWrapper"
                                 android:gravity="end">
 
                                 <TextView
@@ -740,49 +675,6 @@
                                     android:text="@string/route3" />
                             </LinearLayout>
 
-                            <!--<RelativeLayout style="@style/clbRouteResultsWrapper">-->
-
-                            <!--<LinearLayout style="@style/tryCounterWraper">-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_B3txtTry"-->
-                            <!--style="@style/clbRouteTryText"-->
-                            <!--android:text="@string/tries" />-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_B3_numberOfTries"-->
-                            <!--style="@style/TryLeft"-->
-                            <!--android:text="@string/currentTry" />-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_B3_possibleTries"-->
-                            <!--style="@style/TryRight"-->
-                            <!--android:text="@string/outOfPossibleTries" />-->
-                            <!--</LinearLayout>-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_B3_timeCounter"-->
-                            <!--style="@style/smallWrapper"-->
-                            <!--android:text="@string/defaultTimerVal"-->
-                            <!--android:textColor="@color/White" />-->
-                            <!--</RelativeLayout>-->
-
-                            <!--<LinearLayout-->
-                            <!--android:id="@+id/B3_topPointsWrapper"-->
-                            <!--style="@style/clbRouteResultsWrapper"-->
-                            <!--android:gravity="end">-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_B3_topPoints"-->
-                            <!--style="@style/routePointsCounter"-->
-                            <!--android:text="@string/defaultScoreCounter" />-->
-
-                            <!--<TextView-->
-                            <!--android:id="@+id/id_B3_topPointsLbl"-->
-                            <!--style="@style/routePointsCounter"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="@string/points" />-->
-                            <!--</LinearLayout>-->
 
                             <LinearLayout
                                 style="@style/hMatch_vWrap"
@@ -798,28 +690,6 @@
                                         style="@style/buttonFullWidthA"
                                         android:text="@string/btnStart" />
                                 </LinearLayout>
-
-                                <!--<LinearLayout-->
-                                <!--style="@style/hMatch_vWrap"-->
-                                <!--android:layout_marginBottom="0dp"-->
-                                <!--android:padding="0dp">-->
-
-                                <!--&lt;!&ndash;<Button&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:id="@+id/id_B3_btnQuit"&ndash;&gt;-->
-                                <!--&lt;!&ndash;style="@style/buttonSharedWidth"&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:text="@string/btnQuit" />&ndash;&gt;-->
-
-                                <!--&lt;!&ndash;<Button&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:id="@+id/id_B3_btnBonus"&ndash;&gt;-->
-                                <!--&lt;!&ndash;style="@style/buttonSharedWidth"&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:text="@string/bonus" />&ndash;&gt;-->
-
-                                <!--&lt;!&ndash;<Button&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:id="@+id/id_B3_btnTop"&ndash;&gt;-->
-                                <!--&lt;!&ndash;style="@style/buttonSharedWidth"&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:layout_weight="2"&ndash;&gt;-->
-                                <!--&lt;!&ndash;android:text="@string/top" />&ndash;&gt;-->
-                                <!--</LinearLayout>-->
                             </LinearLayout>
                         </LinearLayout>
 
